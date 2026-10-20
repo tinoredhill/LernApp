@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Lernapp Fragen",
+  "type": "object",
+  "required": ["version", "subjects"],
+  "properties": {
+    "version": {"type": "integer"},
+    "subjects": {"type": "array", "minItems": 1, "items": {
+      "type": "object", "required": ["id","name","short","color","icon","topics"],
+      "properties": {
+        "id": {"type":"string"}, "name": {"type":"string"}, "short": {"type":"string"},
+        "color": {"type":"string","pattern":"^#[0-9a-fA-F]{6}$"}, "icon": {"type":"string"},
+        "topics": {"type":"array","minItems":1,"items":{
+          "type":"object","required":["id","name","goals","questions"],
+          "properties":{
+            "id":{"type":"string"},"name":{"type":"string"},
+            "goals":{"type":"object","additionalProperties":{"type":"string"}},
+            "questions":{"type":"array","minItems":1,"items":{
+              "type":"object","required":["id","goal","level","type","prompt","answer","explanation"],
+              "properties":{
+                "id":{"type":"string"},"goal":{"type":"integer"},
+                "level":{"enum":["G","E"]},"type":{"enum":["mc","tf","num"]},
+                "prompt":{"type":"string"},"options":{"type":"array","items":{"type":"string"},"minItems":2},
+                "answer":{},"tolerance":{"type":"number","minimum":0},"unit":{"type":"string"},
+                "image":{"type":"string"},"explanation":{"type":"string"}
+              },"additionalProperties":false
+            }}
+          }
+        }}
+      }
+    }}
+  }
+}
