@@ -1,0 +1,304 @@
+{
+ "version": 1,
+ "subjects": [
+  {
+   "id": "nt",
+   "name": "Natur und Technik",
+   "short": "NT",
+   "color": "#1fa37a",
+   "icon": "icons/fach-nt.svg",
+   "topics": [
+    {
+     "id": "nt-verdauung",
+     "name": "Funktionen des Körpers – Verdauung",
+     "goals": {
+      "12": "Verdauungsorgane und Weg der Nahrung in der richtigen Reihenfolge",
+      "13": "Aufgaben von Mundhöhle, Speiseröhre, Magen, Dünndarm, Dickdarm und Mastdarm",
+      "14": "Organaufgaben den vier Stoffwechselvorgängen zuordnen",
+      "15": "Magensaft: Schleim, Salzsäure, Enzym und ihre Aufgaben",
+      "16": "Aufgaben von Leber, Galle und Bauchspeichel",
+      "17": "Enzyme zerlegen Nährstoffe in Bausteine fürs Blut",
+      "18": "Wo werden Kohlenhydrate, Proteine und Fette verdaut, mit welchem Saft",
+      "19": "Oberflächenvergrösserung mit einem Alltagsbeispiel erklären",
+      "20": "Zweck von Darmfalten und Darmzotten"
+     },
+     "questions": [
+      {
+       "id": "V01",
+       "goal": 12,
+       "level": "G",
+       "type": "mc",
+       "prompt": "In welcher Reihenfolge durchläuft die Nahrung die Verdauungsorgane?",
+       "options": [
+        "Mundhöhle → Speiseröhre → Magen → Dünndarm → Dickdarm → Mastdarm",
+        "Mundhöhle → Magen → Speiseröhre → Dünndarm → Dickdarm → Mastdarm",
+        "Mundhöhle → Speiseröhre → Magen → Dickdarm → Dünndarm → Mastdarm",
+        "Mundhöhle → Speiseröhre → Dünndarm → Magen → Dickdarm → Mastdarm"
+       ],
+       "answer": 0,
+       "explanation": "Von der Mundhöhle gelangt der Brei durch die Speiseröhre in den Magen, dann in den Dünndarm, den Dickdarm und zuletzt in den Mastdarm."
+      },
+      {
+       "id": "V02",
+       "goal": 12,
+       "level": "G",
+       "type": "num",
+       "prompt": "Zähle die Stationen: Mundhöhle = 1. An welcher Stelle kommt der Dünndarm?",
+       "answer": 4,
+       "tolerance": 0,
+       "unit": "",
+       "explanation": "1 Mundhöhle, 2 Speiseröhre, 3 Magen, 4 Dünndarm, 5 Dickdarm, 6 Mastdarm."
+      },
+      {
+       "id": "V03",
+       "goal": 13,
+       "level": "G",
+       "type": "mc",
+       "prompt": "Was ist die Aufgabe der Speiseröhre?",
+       "options": [
+        "Sie zerlegt Proteine mit einem Enzym.",
+        "Sie transportiert den Nahrungsbrei mit wellenförmigen Bewegungen in den Magen.",
+        "Sie gewinnt Wasser aus dem Nahrungsbrei zurück.",
+        "Sie bildet den Speichel."
+       ],
+       "answer": 1,
+       "explanation": "Die Speiseröhre ist ein Muskelschlauch. Ihre wellenförmigen Bewegungen schieben den Brei in den Magen."
+      },
+      {
+       "id": "V04",
+       "goal": 13,
+       "level": "G",
+       "type": "tf",
+       "prompt": "Im Dickdarm werden die meisten Nährstoffe ins Blut aufgenommen.",
+       "answer": false,
+       "explanation": "Falsch. Das geschieht hauptsächlich im Dünndarm. Der Dickdarm gewinnt Wasser zurück und dickt die Reste ein."
+      },
+      {
+       "id": "V05",
+       "goal": 13,
+       "level": "G",
+       "type": "mc",
+       "prompt": "Welches Organ zerkleinert die Nahrung und vermischt sie mit Speichel?",
+       "options": [
+        "Magen",
+        "Dünndarm",
+        "Mundhöhle",
+        "Mastdarm"
+       ],
+       "answer": 2,
+       "explanation": "In der Mundhöhle wird die Nahrung beim Kauen zerkleinert und mit Speichel vermischt. So entsteht der Nahrungsbrei."
+      },
+      {
+       "id": "V06",
+       "goal": 15,
+       "level": "G",
+       "type": "mc",
+       "prompt": "Welche Aufgabe hat der Schleim im Magensaft?",
+       "options": [
+        "Er zerlegt Proteine in kleinere Teile.",
+        "Er vernichtet schädliche Bakterien.",
+        "Er schützt die Magenwand vor der Salzsäure.",
+        "Er zerlegt Stärke in Zucker-Bausteine."
+       ],
+       "answer": 2,
+       "explanation": "Der Schleim schützt vor der Salzsäure. So verdaut sich der Magen nicht selbst."
+      },
+      {
+       "id": "V07",
+       "goal": 15,
+       "level": "G",
+       "type": "mc",
+       "prompt": "Welcher Bestandteil des Magensafts zerlegt die Proteine in kleinere Teile?",
+       "options": [
+        "Schleim",
+        "Salzsäure",
+        "Enzym",
+        "Galle"
+       ],
+       "answer": 2,
+       "explanation": "Das Enzym im Magensaft zerlegt die Proteine. Die Salzsäure lässt die Proteine vorher ausflocken, damit das Enzym gut wirken kann."
+      },
+      {
+       "id": "V08",
+       "goal": 15,
+       "level": "G",
+       "type": "tf",
+       "prompt": "Die Salzsäure im Magen vernichtet schädliche Bakterien aus der Nahrung.",
+       "answer": true,
+       "explanation": "Richtig. Zudem hilft die Salzsäure, Proteine auszuflocken."
+      },
+      {
+       "id": "V09",
+       "goal": 16,
+       "level": "G",
+       "type": "tf",
+       "prompt": "Die Galle wird in der Gallenblase gebildet.",
+       "answer": false,
+       "explanation": "Falsch. Die Galle wird in der Leber gebildet und in der Gallenblase gesammelt."
+      },
+      {
+       "id": "V10",
+       "goal": 16,
+       "level": "G",
+       "type": "mc",
+       "prompt": "Was bewirkt der Bauchspeichel im Zwölffingerdarm?",
+       "options": [
+        "Er zerlegt Fette, Proteine und Kohlenhydrate in kleinere Bestandteile.",
+        "Er gewinnt Wasser zurück.",
+        "Er transportiert den Brei in den Magen.",
+        "Er speichert Kohlenhydrate."
+       ],
+       "answer": 0,
+       "explanation": "Der Bauchspeichel aus der Bauchspeicheldrüse sorgt dafür, dass Fette, Proteine und Kohlenhydrate in kleinere Bestandteile zerlegt werden."
+      },
+      {
+       "id": "V11",
+       "goal": 16,
+       "level": "G",
+       "type": "mc",
+       "prompt": "Welche Aussage über die Leber stimmt?",
+       "options": [
+        "Sie bildet den Magensaft.",
+        "Sie hilft beim Abbau von Giftstoffen und speichert Kohlenhydrate.",
+        "Sie nimmt die meisten Nährstoffe ins Blut auf.",
+        "Sie dickt die unverdaulichen Reste ein."
+       ],
+       "answer": 1,
+       "explanation": "Die Leber bildet die Galle, hilft beim Abbau von Giftstoffen und Medikamenten und speichert Kohlenhydrate."
+      },
+      {
+       "id": "V12",
+       "goal": 17,
+       "level": "G",
+       "type": "mc",
+       "prompt": "Das Enzym im Speichel zerlegt die Stärke in …",
+       "options": [
+        "Fettsäuren",
+        "kleinere Zucker-Bausteine",
+        "Proteine",
+        "Salzsäure"
+       ],
+       "answer": 1,
+       "explanation": "Die Stärke wird in kleinere Zucker-Bausteine zerlegt. Nur kleine Bausteine können ins Blut aufgenommen werden."
+      },
+      {
+       "id": "V13",
+       "goal": 19,
+       "level": "G",
+       "type": "mc",
+       "prompt": "Ein Frotteetuch und ein Leinentuch sind gleich gross. Warum nimmt das Frotteetuch mehr Wasser auf?",
+       "options": [
+        "Es ist aus einem anderen Stoff, der Wasser anzieht.",
+        "Es ist wärmer.",
+        "Seine vielen Schlingen vergrössern die Oberfläche, so gibt es mehr Kontaktstellen zum Wasser.",
+        "Es ist dünner gewoben."
+       ],
+       "answer": 2,
+       "image": "img/frottee-leinen.svg",
+       "explanation": "Die Schlingen vergrössern die Oberfläche bei gleicher Grösse des Tuchs. Mehr Oberfläche bedeutet mehr Austausch."
+      },
+      {
+       "id": "V14",
+       "goal": 20,
+       "level": "G",
+       "type": "mc",
+       "prompt": "Wozu hat der Dünndarm Darmfalten und Darmzotten?",
+       "options": [
+        "Sie vergrössern die Oberfläche, damit viel mehr Nährstoffe ins Blut aufgenommen werden können.",
+        "Sie bilden die Galle für die Fettverdauung.",
+        "Sie gewinnen Wasser aus den unverdaulichen Resten zurück.",
+        "Sie schützen die Darmwand vor der Salzsäure."
+       ],
+       "answer": 0,
+       "explanation": "Darmfalten und Darmzotten vergrössern die Oberfläche des Dünndarms sehr stark. Dadurch können viel mehr Nährstoffe schnell ins Blut aufgenommen werden."
+      },
+      {
+       "id": "V15",
+       "goal": 14,
+       "level": "E",
+       "type": "mc",
+       "prompt": "Welchem Stoffwechselvorgang entspricht die Hauptaufgabe der Speiseröhre?",
+       "options": [
+        "Stoffaufnahme",
+        "Stofftransport",
+        "Stoffumwandlung",
+        "Stoffabgabe"
+       ],
+       "answer": 1,
+       "explanation": "Die Speiseröhre transportiert den Nahrungsbrei in den Magen: Stofftransport."
+      },
+      {
+       "id": "V16",
+       "goal": 14,
+       "level": "E",
+       "type": "mc",
+       "prompt": "Im Magen zerlegt das Enzym die Proteine in kleinere Teile. Welcher Stoffwechselvorgang ist das?",
+       "options": [
+        "Stoffaufnahme",
+        "Stofftransport",
+        "Stoffumwandlung",
+        "Stoffabgabe"
+       ],
+       "answer": 2,
+       "explanation": "Ein Stoff wird in kleinere Teile zerlegt, also umgewandelt: Stoffumwandlung."
+      },
+      {
+       "id": "V17",
+       "goal": 14,
+       "level": "E",
+       "type": "mc",
+       "prompt": "Über den After verlassen die unverdaulichen Reste als Kot den Körper. Welcher Stoffwechselvorgang ist das?",
+       "options": [
+        "Stoffaufnahme",
+        "Stofftransport",
+        "Stoffumwandlung",
+        "Stoffabgabe"
+       ],
+       "answer": 3,
+       "explanation": "Stoffe verlassen den Körper: Stoffabgabe."
+      },
+      {
+       "id": "V18",
+       "goal": 18,
+       "level": "E",
+       "type": "mc",
+       "prompt": "Wo werden Proteine zuerst zerlegt, und mit welchem Saft?",
+       "options": [
+        "In der Mundhöhle mit Speichel",
+        "Im Magen mit Magensaft",
+        "Im Dickdarm mit Galle",
+        "In der Speiseröhre mit Schleim"
+       ],
+       "answer": 1,
+       "explanation": "Im Magen zerlegt das Enzym im Magensaft die Proteine. Im Dünndarm hilft der Bauchspeichel weiter."
+      },
+      {
+       "id": "V19",
+       "goal": 18,
+       "level": "E",
+       "type": "mc",
+       "prompt": "Wo werden Fette vor allem verdaut, und welcher Saft hilft dabei?",
+       "options": [
+        "Im Magen, mit Salzsäure",
+        "In der Mundhöhle, mit Speichel",
+        "Im Dünndarm, mit Galle (und Bauchspeichel)",
+        "Im Dickdarm, mit Schleim"
+       ],
+       "answer": 2,
+       "explanation": "Im Dünndarm hilft die Galle bei der Fettverdauung, der Bauchspeichel zerlegt die Fette in kleinere Bestandteile."
+      },
+      {
+       "id": "V20",
+       "goal": 18,
+       "level": "E",
+       "type": "tf",
+       "prompt": "Die Verdauung der Kohlenhydrate (Stärke) beginnt erst im Dünndarm.",
+       "answer": false,
+       "explanation": "Falsch. Sie beginnt schon in der Mundhöhle: Das Enzym im Speichel zerlegt die Stärke. Im Dünndarm hilft der Bauchspeichel weiter."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

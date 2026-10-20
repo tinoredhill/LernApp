@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220" font-family="system-ui,sans-serif" font-size="18">
+<rect width="600" height="220" fill="#fff"/>
+<text x="150" y="28" text-anchor="middle" font-weight="700" fill="#33415c">Leinentuch</text>
+<text x="450" y="28" text-anchor="middle" font-weight="700" fill="#33415c">Frotteetuch</text>
+<rect x="40" y="120" width="220" height="16" fill="#9aa9c2"/>
+<path d="M40 120 L260 120" stroke="#1f7ae0" stroke-width="5"/>
+<rect x="340" y="120" width="220" height="16" fill="#9aa9c2"/>
+<path id="s" fill="none" stroke="#1f7ae0" stroke-width="5" d="M340 120 c0-40 20-40 20 0 c0-40 20-40 20 0 c0-40 20-40 20 0 c0-40 20-40 20 0 c0-40 20-40 20 0 c0-40 20-40 20 0 c0-40 20-40 20 0 c0-40 20-40 20 0 c0-40 20-40 20 0 c0-40 20-40 20 0 c0-40 20-40 20 0"/>
+<text x="150" y="175" text-anchor="middle" fill="#33415c">glatte Oberfläche</text>
+<text x="450" y="175" text-anchor="middle" fill="#33415c">Schlingen: grössere Oberfläche</text>
+<text x="300" y="208" text-anchor="middle" font-size="15" fill="#6b7a90">Querschnitt, gleich breit · blau = Oberfläche (Kontakt zum Wasser)</text>
+</svg>

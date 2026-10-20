@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<rect width="512" height="512" rx="112" fill="#1fa37a"/>
+<!-- Erlenmeyerkolben -->
+<path d="M206 96 H306 M222 96 V214 L132 392 Q122 420 152 420 H360 Q390 420 380 392 L290 214 V96" fill="#fff" stroke="#0b4f3c" stroke-width="20" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M176 330 H336 L364 392 Q368 402 356 402 H156 Q144 402 148 392 Z" fill="#7fe0bd"/>
+<!-- Blatt -->
+<path d="M262 262 C262 214 302 190 342 194 C344 238 314 266 262 262 Z" fill="#1fa37a" stroke="#0b4f3c" stroke-width="10" stroke-linejoin="round"/>
+<path d="M262 262 L318 214" stroke="#0b4f3c" stroke-width="8" stroke-linecap="round"/>
+<!-- Atom -->
+<g transform="translate(206,362)" fill="none" stroke="#0b4f3c" stroke-width="9">
+<ellipse rx="44" ry="16"/><ellipse rx="44" ry="16" transform="rotate(60)"/><ellipse rx="44" ry="16" transform="rotate(-60)"/>
+<circle r="9" fill="#0b4f3c" stroke="none"/></g>
+</svg>
