@@ -1,4 +1,4 @@
-const C='lernpfad-v7';
+const C='lernpfad-v8';
 const F=['./','index.html','style.css','app.js','questions.json','manifest.webmanifest','icons/fach-nt.svg','icons/icon-192.png','icons/icon-512.png','icons/apple-touch-icon.png','img/frottee-leinen.svg'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(F)));self.skipWaiting();});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x)))));self.clients.claim();});

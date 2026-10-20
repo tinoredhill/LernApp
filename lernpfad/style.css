@@ -65,3 +65,6 @@ nav[hidden]{display:none}
 .goal{position:absolute;left:50%;transform:translateX(-50%);font-size:.75rem;font-weight:700;color:var(--sand);white-space:nowrap}
 .hint.up{text-align:center;margin:6px 0 0;color:var(--sand)}
 main{scroll-padding-bottom:110px}
+.pki{width:18px;height:18px;vertical-align:-3px;color:var(--sand)}.packchip{display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:var(--card);border-radius:14px;padding:10px 14px;margin-bottom:12px;font-weight:700;font-size:.88rem;color:var(--sand)}.packchip small{color:var(--mut);font-weight:500}
+.packintro{display:flex;align-items:center;gap:12px}.packintro .pki{width:32px;height:32px}.packintro small{color:var(--mut)}.tag.pk{color:var(--sand)}.tag.pk .pki{width:12px;height:12px;vertical-align:-1px}
+.packnav{display:flex;align-items:center;gap:4px;padding:0 12px 0 8px;font-weight:800;color:var(--sand);font-size:.95rem}

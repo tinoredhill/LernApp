@@ -1,6 +1,7 @@
 'use strict';
 const $=s=>document.querySelector(s),app=$('#app'),nav=$('#nav');
 const ST='lernpfad-v1',LOB=['Super!','Stark!','Genau so!','Richtig, weiter so!','Sauber gelöst!'];
+const PACK='<svg class="pki" viewBox="0 0 24 24"><path d="M9 5a3 3 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="2"/><rect x="5" y="6" width="14" height="15" rx="4" fill="currentColor"/><rect x="8" y="13" width="8" height="5" rx="1.5" fill="#0f1a1c" opacity=".35"/></svg>';
 const XP_OK=10,XP_BONUS=5; // Bonus ab der 3. richtigen Antwort in Folge
 let DATA,S,T,store=Object.assign({stats:{},xp:0,run:0,best:0,days:[],badges:{},stages:{},mode:'sek'},JSON.parse(localStorage.getItem(ST)||'{}'));
 const save=()=>{try{localStorage.setItem(ST,JSON.stringify(store))}catch(e){}};
@@ -42,7 +43,7 @@ function mtn(){return `<svg class="mtn" viewBox="0 0 800 220" preserveAspectRati
 <path d="M22 58 L60 100 L44 112 L38 140 L28 120Z" fill="#3a6656" opacity=".7"/>
 <path d="M60 100 L110 146 L80 150 L72 172Z" fill="#163029" opacity=".8"/>
 <path d="M0 200 V176 C60 186 140 194 200 200Z" fill="#0f1a1c"/></svg>`}
-function setNav(v,show){nav.hidden=!show;nav.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.v===v))}
+function setNav(v,show){const o=nav.querySelector('.packnav');if(o)o.remove();nav.hidden=!show;nav.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.v===v))}
 nav.querySelectorAll('button').forEach(b=>b.onclick=()=>b.dataset.v==='pfad'?pfad():uebersicht());
 function view(h){app.style.animation='none';app.offsetHeight;app.style.animation='';app.innerHTML=h;window.scrollTo(0,0)}
 function toast(t){const d=document.createElement('div');d.className='toast';d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),2200)}
@@ -81,39 +82,57 @@ function pfad(){color(S.color);setNav('pfad',true);
  <div class="goal" style="top:${goal.y+24}px">Ziel: Thema gemeistert</div>
  ${st.map((s,i)=>`<button class="stage ${sdone(T,s.lz)?'done':''} ${i===nx?'next':''}" style="left:${pts[i].x/W*100}%;top:${pts[i].y}px;--sc:${pts[i].sc.toFixed(2)}" data-i="${i}"><div class="dot">${sdone(T,s.lz)?'✓':s.lz}</div><span>LZ ${s.lz} · ${s.qs.length} ${s.qs.length>1?'Fragen':'Frage'}</span></button>`).join('')}</div>
  ${nx>=0?'<p class="hint up">↑ Weiter Richtung Gipfel</p>':''}<button class="btn" id="go">${nx<0?'Ganzes Thema wiederholen':'Etappe LZ '+st[nx].lz+' starten'}</button>`);
+ const pn=packQs().length;if(pn)nav.insertAdjacentHTML('beforeend',`<span class="packnav" title="Rucksack: Fragen, die in der nächsten Etappe wiederkommen">${PACK}${pn}</span>`);
  $('#bk').onclick=home;
  app.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{store.mode=b.dataset.k;save();pfad()});
  app.querySelectorAll('.stage').forEach(b=>b.onclick=()=>quiz([st[b.dataset.i]]));
  $('#go').onclick=()=>quiz(nx<0?st:[st[nx]]);
- const tgt=nx<0?$('.goal'):app.querySelectorAll('.stage')[nx];
- setTimeout(()=>tgt.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'}),350);}
+ const tgt=nx<0?$('.goal'):app.querySelectorAll('.stage')[nx],from=lastStage!=null?app.querySelectorAll('.stage')[st.findIndex(s=>s.lz===lastStage)]:null;lastStage=null;
+ const yOf=el=>{const r=el.getBoundingClientRect();return Math.max(0,window.scrollY+r.top+r.height/2-innerHeight/2)};
+ window.scrollTo({top:yOf(from||tgt),behavior:'instant'});
+ if(from&&from!==tgt&&!matchMedia('(prefers-reduced-motion: reduce)').matches){const y0=window.scrollY,y1=yOf(tgt),D=1300;
+  setTimeout(()=>{const t0=performance.now(),ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+   const step=now=>{const t=Math.min(1,(now-t0)/D);window.scrollTo(0,y0+(y1-y0)*ease(t));if(t<1)requestAnimationFrame(step)};requestAnimationFrame(step)},400)}
+ else if(from)window.scrollTo({top:yOf(tgt),behavior:'instant'});}
 
 function weight(q){const s=store.stats[q.id]||{r:0,w:0};return s.w*2-Math.min(s.r,3)*.5+Math.random()}
-function quiz(sts){setNav('',false);
- const pool=sts.flatMap(s=>s.qs).sort((a,b)=>weight(b)-weight(a)),queue=pool.slice(),again=new Set(),total=pool.length;let done=0,xp=0,run=0;
+function packQs(){store.pack=store.pack||[];const f=MODES[store.mode][1];return store.pack.map(id=>T.questions.find(q=>q.id===id)).filter(q=>q&&f(q))}
+let lastStage=null; // LZ der eben abgeschlossenen Etappe (für das Scrollen)
+function quiz(sts){setNav('',false);store.pack=store.pack||[];
+ const own=sts.flatMap(s=>s.qs),ownIds=new Set(own.map(q=>q.id)),queue=own.slice().sort((a,b)=>weight(b)-weight(a));
+ // Rucksack-Fragen aus früheren Etappen: gemischt einfügen, nie als erste
+ const fromPack=new Set();packQs().filter(q=>!ownIds.has(q.id)).forEach(q=>{fromPack.add(q.id);queue.splice(1+Math.floor(Math.random()*queue.length),0,q)});
+ let total=queue.length,done=0,xp=0,run=0,packRound=false;
  if(!store.days.includes(today())){store.days.push(today());store.days=store.days.slice(-60);save()}
- const next=()=>queue.length?show(queue.shift()):finish();
- function show(q){const body=q.type==='mc'?q.options.map((o,i)=>`<button class="opt" data-v="${i}">${esc(o)}</button>`).join(''):
+ const next=()=>{if(queue.length)return show(queue.shift());
+  if(!packRound){const m=store.stages[T.id]||{},rest=stages(T).some(s=>!m[s.lz]&&!sts.some(x=>x.lz===s.lz)),pk=packQs();
+   if(!rest&&pk.length){packRound=true;pk.forEach(q=>{fromPack.add(q.id);queue.push(q)});total+=pk.length;return show(queue.shift(),true)}}
+  finish()};
+ function show(q,intro){const body=q.type==='mc'?q.options.map((o,i)=>`<button class="opt" data-v="${i}">${esc(o)}</button>`).join(''):
   q.type==='tf'?`<button class="opt" data-v="true">Richtig</button><button class="opt" data-v="false">Falsch</button>`:
   `<div class="num"><input id="n" inputmode="decimal" autocomplete="off" placeholder="Zahl">${q.unit?`<b>${esc(q.unit)}</b>`:''}</div><button class="btn" id="ck">Prüfen</button>`;
+  const pk=fromPack.has(q.id);
   view(`<div class="top"><button class="x" id="x" aria-label="Schliessen">×</button><div class="bar"><i style="width:${done/total*100}%"></i></div><span class="xp" id="xp">${xp} XP</span></div>
-  <div class="card"><span class="tag">LZ ${q.goal}</span><span class="tag">${q.level}</span><div class="q">${esc(q.prompt)}${q.image?`<img src="${q.image}" alt="Abbildung">`:''}</div>${body}<div id="fb"></div></div>`);
+  ${intro?'<div class="card packintro">'+PACK+'<span><b>Rucksack-Runde</b><br><small>Noch einmal die Fragen aus deinem Rucksack.</small></span></div>':''}
+  <div class="card"><span class="tag">LZ ${q.goal}</span><span class="tag">${q.level}</span>${pk?'<span class="tag pk">'+PACK+' Rucksack</span>':''}<div class="q">${esc(q.prompt)}${q.image?`<img src="${q.image}" alt="Abbildung">`:''}</div>${body}<div id="fb"></div></div>`);
   $('#x').onclick=pfad;
   const answer=(ok,el)=>{app.querySelectorAll('.opt,#ck,#n').forEach(b=>b.disabled=true);
    if(q.type!=='num'){app.querySelectorAll('.opt').forEach(b=>{if(b.dataset.v===String(q.answer))b.classList.add('ok')});if(!ok&&el)el.classList.add('no')}
    const s=store.stats[q.id]=store.stats[q.id]||{r:0,w:0};ok?s.r++:s.w++;
-   let gain=0,re=false;
-   if(ok){run++;store.run++;store.best=Math.max(store.best,store.run);gain=XP_OK+(run>=3?XP_BONUS:0);xp+=gain;store.xp+=gain;done++;confetti();if(store.run>=10)award('serie10')}
-   else{run=0;store.run=0;if(!again.has(q.id)){again.add(q.id);queue.splice(Math.min(2,queue.length),0,q);re=true}else done++}
+   let gain=0;done++;
+   if(ok){run++;store.run++;store.best=Math.max(store.best,store.run);gain=XP_OK+(run>=3?XP_BONUS:0);xp+=gain;store.xp+=gain;confetti();if(store.run>=10)award('serie10');store.pack=store.pack.filter(x=>x!==q.id)}
+   else{run=0;store.run=0;if(!store.pack.includes(q.id))store.pack.push(q.id)}
    save();
    const sol=q.type==='num'?` Lösung: ${q.answer}${q.unit?' '+q.unit:''}.`:'';
-   $('#fb').innerHTML=`<div class="fb ${ok?'ok':'no'}"><b>${ok?LOB[Math.floor(Math.random()*LOB.length)]+`<span class="plus">+${gain} XP${gain>XP_OK?' (Serienbonus)':''}</span>`:'Noch nicht ganz.'+(re?' Die Frage kommt gleich nochmals.':'')}</b>${esc(q.explanation)}${esc(sol)}</div><button class="btn" id="nx">Weiter</button>`;
+   $('#fb').innerHTML=`<div class="fb ${ok?'ok':'no'}"><b>${ok?LOB[Math.floor(Math.random()*LOB.length)]+`<span class="plus">+${gain} XP${gain>XP_OK?' (Serienbonus)':''}</span>`+(pk?' Raus aus dem Rucksack.':''):'Noch nicht ganz. Die Frage kommt in deinen Rucksack.'}</b>${esc(q.explanation)}${esc(sol)}</div><button class="btn" id="nx">Weiter</button>`;
    $('.bar i').style.width=done/total*100+'%';$('#xp').textContent=xp+' XP';$('#nx').onclick=next;$('#nx').scrollIntoView({behavior:'smooth',block:'nearest'})};
   app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>answer(b.dataset.v===String(q.answer),b));
   if(q.type==='num'){const f=()=>{const v=parseFloat($('#n').value.replace(/[’' ]/g,'').replace(',','.'));if(isNaN(v))return $('#n').focus();answer(Math.abs(v-q.answer)<=(q.tolerance||0)+1e-9)};$('#ck').onclick=f;$('#n').onkeydown=e=>{if(e.key==='Enter')f()}}}
- function finish(){const m=store.stages[T.id]=store.stages[T.id]||{};sts.forEach(s=>m[s.lz]=true);award('etappe');
+ function finish(){const m=store.stages[T.id]=store.stages[T.id]||{};sts.forEach(s=>m[s.lz]=true);lastStage=sts[sts.length-1].lz;award('etappe');
   if(T.questions.every(q=>(store.stats[q.id]||{}).r>0))award('meister');save();
+  const pn=packQs().length;
   view(`<section class="hero"><div class="brand"><i></i>Etappe geschafft</div><h1>+${xp} XP</h1><p>${sts.length>1?'Alle Etappen':'Etappe LZ '+sts[0].lz} abgeschlossen. Schön gemacht!</p>${mtn()}</section>
+  ${pn?`<div class="card packintro">${PACK}<span>Im Rucksack: ${pn} ${pn>1?'Fragen':'Frage'}<br><small>Sie kommen in der nächsten Etappe wieder.</small></span></div>`:''}
   <button class="btn" id="w">Weiter auf dem Pfad</button><button class="btn sec" id="u">Zur Übersicht</button>`);confetti();
   $('#w').onclick=pfad;$('#u').onclick=uebersicht}
  next()}
