@@ -2,8 +2,8 @@
  "_hinweis": "Status pro Thema, von der Lehrperson gesetzt: aktuell (oben), repetition (eingeklappt), spaeter (ausgeblendet). Fehlt ein Thema, gilt «aktuell».",
  "topics": {
   "nt-optik": "aktuell",
-  "nt-verdauung": "aktuell",
-  "rzg-universum": "aktuell",
+  "nt-verdauung": "spaeter",
+  "rzg-universum": "spaeter",
   "rzg-wk1": "aktuell"
  }
 }
