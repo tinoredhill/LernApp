@@ -4,6 +4,8 @@ const ST='lernpfad-v1',LOB=['Super!','Stark!','Genau so!','Richtig, weiter so!',
 const PACK='<svg class="pki" viewBox="0 0 24 24"><path d="M9 5a3 3 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="2"/><rect x="5" y="6" width="14" height="15" rx="4" fill="currentColor"/><rect x="8" y="13" width="8" height="5" rx="1.5" fill="#0f1a1c" opacity=".35"/></svg>';
 const XP_OK=10,XP_BONUS=5; // Bonus ab der 3. richtigen Antwort in Folge
 let DATA,S,T,store=Object.assign({stats:{},xp:0,run:0,best:0,days:[],badges:{},stages:{},mode:'sek'},JSON.parse(localStorage.getItem(ST)||'{}'));
+// Migration v9 → v10: gleicher Schlüssel, neue Felder nur ergänzen
+store.favs=Array.isArray(store.favs)?store.favs:[];store.pack=Array.isArray(store.pack)?store.pack:[];store.schema=2;
 const save=()=>{try{localStorage.setItem(ST,JSON.stringify(store))}catch(e){}};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const fmt=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'’');
@@ -59,12 +61,32 @@ function dayStreak(){const set=new Set(store.days);let n=0,d=new Date();if(!set.
  for(;;){const k=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');if(!set.has(k))break;n++;d.setDate(d.getDate()-1)}return n}
 function award(id){if(store.badges[id])return;store.badges[id]=today();save();const b=BADGES.find(x=>x.id===id);setTimeout(()=>{toast('Abzeichen: '+b.name);confetti()},400)}
 
+let CFG={topics:{}};
+const prog=t=>{const n=t.questions.length,r=t.questions.filter(q=>(store.stats[q.id]||{}).r>0).length;return {n,r,p:n?r/n:0}};
+const STAR='<svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.8-4.4 4.3 1 6.1L12 17l-5.4 2.8 1-6.1-4.4-4.3 6.1-.8z"/></svg>';
 function home(){color('#1fa37a');setNav('',false);
  view(`<section class="hero"><div class="brand"><i></i>Lernpfad</div><h1>Bereit für die nächste Etappe?</h1><p>Wähle ein Fach und geh deinen Weg Schritt für Schritt.</p>${mtn()}</section>
  <div class="chips"><div class="chip"><b>${fmt(store.xp)}</b><small>XP</small></div><div class="chip"><b>${dayStreak()}</b><small>Tage in Folge</small></div><div class="chip"><b>${Object.keys(store.badges).length}/3</b><small>Abzeichen</small></div></div>
- <h3>Fächer</h3>${DATA.subjects.map((s,i)=>`<button class="card tile" style="--c:${s.color}" data-i="${i}"><img src="${s.icon}" alt=""><span><b>${esc(s.name)}</b><small>${s.topics.length} Thema · ${esc(s.topics[0].name)}</small></span></button>`).join('')}
+ <h3>Fächer</h3><div class="grid">${DATA.subjects.map((s,i)=>{const ts=s.topics.filter(t=>CFG.topics[t.id]!=='spaeter'),q=ts.reduce((a,t)=>a+t.questions.length,0),r=ts.reduce((a,t)=>a+prog(t).r,0);
+  return `<button class="card tile subj" style="--c:${s.color}" data-i="${i}"><img src="${s.icon}" alt=""><span><b>${esc(s.name)}</b>${ts.length?`<small>${ts.length} ${ts.length>1?'Themen':'Thema'}${q?` · ${r}/${q} Fragen geschafft`:''}</small>${q?`<i class="mini"><i style="width:${r/q*100}%"></i></i>`:''}`:'<small class="soon">Bald verfügbar</small>'}</span></button>`}).join('')}</div>
  <p class="hint">Alles bleibt nur auf diesem Gerät, ohne Login und ohne Rangliste. Auf dem iPhone kann der Fortschritt verloren gehen (z.B. wenn Safari Daten löscht).</p>`);
- app.querySelectorAll('.tile').forEach(b=>b.onclick=()=>{S=DATA.subjects[b.dataset.i];T=S.topics[0];pfad()})}
+ app.querySelectorAll('.subj').forEach(b=>b.onclick=()=>{S=DATA.subjects[b.dataset.i];themen()})}
+
+function themen(){color(S.color);setNav('',false);store.favs=store.favs||[];
+ const vis=S.topics.filter(t=>CFG.topics[t.id]!=='spaeter'),fav=vis.filter(t=>store.favs.includes(t.id)),rest=vis.filter(t=>!store.favs.includes(t.id));
+ const akt=rest.filter(t=>(CFG.topics[t.id]||'aktuell')==='aktuell'),rep=rest.filter(t=>CFG.topics[t.id]==='repetition');
+ const card=t=>{const g=prog(t),f=store.favs.includes(t.id);return `<div class="card topic" data-id="${t.id}"><button class="topen" data-id="${t.id}"><b>${esc(t.name)}</b>
+  ${g.n?`<small>${g.r}/${g.n} Fragen geschafft · ${stages(t).length} Etappen</small><i class="mini"><i style="width:${g.p*100}%"></i></i>`:'<small class="soon">Fragen folgen</small>'}</button>
+  <button class="star ${f?'on':''}" data-id="${t.id}" aria-label="${f?'Favorit entfernen':'Als Favorit markieren'}" aria-pressed="${f}">${STAR}</button></div>`};
+ view(`<section class="hero"><button class="back" aria-label="Zurück" id="bk">‹</button><div class="brand"><i></i>Lernpfad · ${esc(S.short)}</div><h1>${esc(S.name)}</h1><p>${vis.length?'Wähle ein Thema. Mit dem Stern merkst du dir Favoriten.':'Hier entstehen bald neue Lernpfade.'}</p>${mtn()}</section>
+ ${!vis.length?`<div class="card empty"><img src="${S.icon}" alt=""><b>Bald verfügbar</b><p class="hint">Für ${esc(S.name)} gibt es noch keine Themen. Schau später wieder vorbei.</p><button class="btn sec" id="hm">Zu den Fächern</button></div>`:''}
+ ${fav.length?`<h3>★ Favoriten</h3>${fav.map(card).join('')}`:''}
+ ${akt.length?`<h3>Aktuell</h3>${akt.map(card).join('')}`:''}
+ ${rep.length?`<details class="fold"${store.repOpen?' open':''}><summary>Repetition <small>${rep.length} ${rep.length>1?'Themen':'Thema'}</small></summary>${rep.map(card).join('')}</details>`:''}`);
+ $('#bk').onclick=home;const hm=$('#hm');if(hm)hm.onclick=home;
+ const fd=$('.fold');if(fd)fd.ontoggle=()=>{store.repOpen=fd.open;save()};
+ app.querySelectorAll('.star').forEach(b=>b.onclick=()=>{const id=b.dataset.id;store.favs=store.favs.includes(id)?store.favs.filter(x=>x!==id):store.favs.concat(id);save();const y=scrollY;themen();window.scrollTo(0,y)});
+ app.querySelectorAll('.topen').forEach(b=>b.onclick=()=>{const t=S.topics.find(x=>x.id===b.dataset.id);if(!t.questions.length)return toast('Fragen folgen bald');T=t;pfad()})}
 
 function pfad(){color(S.color);setNav('pfad',true);
  const st=stages(T),n=st.length,nx=st.findIndex(s=>!sdone(T,s.lz)),H=118,W=340,TOP=90,h=TOP+(n-1)*H+90;
@@ -83,7 +105,7 @@ function pfad(){color(S.color);setNav('pfad',true);
  ${st.map((s,i)=>`<button class="stage ${sdone(T,s.lz)?'done':''} ${i===nx?'next':''}" style="left:${pts[i].x/W*100}%;top:${pts[i].y}px;--sc:${pts[i].sc.toFixed(2)}" data-i="${i}"><div class="dot">${sdone(T,s.lz)?'✓':s.lz}</div><span>LZ ${s.lz} · ${s.qs.length} ${s.qs.length>1?'Fragen':'Frage'}</span></button>`).join('')}</div>
  ${nx>=0?'<p class="hint up">↑ Weiter Richtung Gipfel</p>':''}<button class="btn" id="go">${nx<0?'Ganzes Thema wiederholen':'Etappe LZ '+st[nx].lz+' starten'}</button>`);
  const pn=packQs().length;if(pn)nav.insertAdjacentHTML('beforeend',`<span class="packnav" title="Rucksack: Fragen, die in der nächsten Etappe wiederkommen">${PACK}${pn}</span>`);
- $('#bk').onclick=home;
+ $('#bk').onclick=themen;
  app.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{store.mode=b.dataset.k;save();pfad()});
  app.querySelectorAll('.stage').forEach(b=>b.onclick=()=>quiz([st[b.dataset.i]]));
  $('#go').onclick=()=>quiz(nx<0?st:[st[nx]]);
@@ -96,6 +118,40 @@ function pfad(){color(S.color);setNav('pfad',true);
  else if(from)window.scrollTo({top:yOf(tgt),behavior:'instant'});}
 
 function weight(q){const s=store.stats[q.id]||{r:0,w:0};return s.w*2-Math.min(s.r,3)*.5+Math.random()}
+
+/* ---------- Fragetypen ---------- */
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+function shuffled(a){if(a.length<2)return a.slice();let s;do s=shuffle(a);while(s.every((x,i)=>x===a[i]));return s}
+function parseNum(s){s=String(s).trim().replace(/[’'\s]/g,'');if(s.includes(',')&&!s.includes('.'))s=s.replace(',','.');else s=s.replace(/,/g,'');return s===''?NaN:Number(s)}
+function fmtNum(n){const [i,d]=String(n).split('.');return i.replace(/\B(?=(\d{3})+(?!\d))/g,'’')+(d?'.'+d:'')}
+const norm=s=>String(s).trim().toLowerCase().replace(/[’'\s]/g,'').replace(/\./g,':');
+function imgHtml(im){if(!im)return '';const o=typeof im==='string'?{src:im,alt:'Abbildung'}:im;
+ return `<figure class="qimg"><img src="${esc(o.src)}" alt="${esc(o.alt||'')}" loading="lazy">${o.credit?`<figcaption>${esc(o.credit)}</figcaption>`:''}</figure>`}
+function widget(q){
+ if(q.type==='mc'||q.type==='tf'){const opts=q.type==='tf'?[['true','Richtig'],['false','Falsch']]:q.options.map((o,i)=>[String(i),o]);
+  return {html:opts.map(([v,t])=>`<button class="opt" data-v="${v}">${esc(t)}</button>`).join(''),bind:ans=>app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
+   const ok=b.dataset.v===String(q.answer);app.querySelectorAll('.opt').forEach(x=>{if(x.dataset.v===String(q.answer))x.classList.add('ok')});if(!ok)b.classList.add('no');ans(ok,'')})}}
+ if(q.type==='num')return {html:`<div class="num"><input id="n" inputmode="decimal" autocomplete="off" placeholder="Zahl, z.B. 2’903.36">${q.unit?`<b>${esc(q.unit)}</b>`:''}</div><button class="btn" id="ck">Prüfen</button>`,
+  bind:ans=>{const f=()=>{const v=parseNum($('#n').value);if(isNaN(v))return $('#n').focus();const ok=Math.abs(v-q.answer)<=(q.tolerance||0)+1e-9;$('#n').classList.add(ok?'ok':'no');ans(ok,`Lösung: <b>${fmtNum(q.answer)}${q.unit?' '+esc(q.unit):''}</b>`)};$('#ck').onclick=f;$('#n').onkeydown=e=>{if(e.key==='Enter')f()}}}
+ if(q.type==='order'){const pool=shuffled(q.items.map((t,i)=>i));
+  return {html:`<p class="hint">Tippe die Einträge in der richtigen Reihenfolge an. Nochmals tippen nimmt einen Eintrag zurück.</p><ol class="ord" id="picked"></ol><div class="pool" id="pool">${pool.map(i=>`<button class="chipbtn" data-i="${i}">${esc(q.items[i])}</button>`).join('')}</div><button class="btn" id="ck" disabled>Prüfen</button>`,
+  bind:ans=>{const picked=[];const draw=()=>{$('#picked').innerHTML=picked.map((i,k)=>`<li><button class="chipbtn on" data-k="${k}"><span>${k+1}</span>${esc(q.items[i])}</button></li>`).join('');
+    app.querySelectorAll('#pool .chipbtn').forEach(b=>b.hidden=picked.includes(+b.dataset.i));$('#ck').disabled=picked.length<q.items.length;
+    app.querySelectorAll('#picked .chipbtn').forEach(b=>b.onclick=()=>{picked.splice(+b.dataset.k,1);draw()})};
+   app.querySelectorAll('#pool .chipbtn').forEach(b=>b.onclick=()=>{picked.push(+b.dataset.i);draw()});
+   $('#ck').onclick=()=>{const ok=picked.every((v,k)=>v===k);app.querySelectorAll('#picked li').forEach((li,k)=>li.classList.add(picked[k]===k?'ok':'no'));
+    ans(ok,'Richtige Reihenfolge:<ol>'+q.items.map(t=>'<li>'+esc(t)+'</li>').join('')+'</ol>')}}}}
+ if(q.type==='match'){const rights=shuffled(q.pairs.map(p=>p[1]));
+  return {html:`<div class="match">${q.pairs.map((p,i)=>`<label class="mrow"><span>${esc(p[0])}</span><select data-i="${i}"><option value="">– wählen –</option>${rights.map(r=>`<option>${esc(r)}</option>`).join('')}</select></label>`).join('')}</div><button class="btn" id="ck" disabled>Prüfen</button>`,
+  bind:ans=>{const ss=[...app.querySelectorAll('.match select')];ss.forEach(s=>s.onchange=()=>{$('#ck').disabled=ss.some(x=>!x.value)});
+   $('#ck').onclick=()=>{let ok=true;ss.forEach(s=>{const g=s.value===q.pairs[+s.dataset.i][1];s.parentNode.classList.add(g?'ok':'no');if(!g)ok=false});
+    ans(ok,'Richtig ist:<ul>'+q.pairs.map(p=>`<li><b>${esc(p[0])}</b> → ${esc(p[1])}</li>`).join('')+'</ul>')}}}}
+ if(q.type==='cloze'){const html=esc(q.text).replace(/\{(\d+)\}/g,(m,k)=>{const g=q.gaps[+k];return g.options?`<select class="gap" data-k="${k}"><option value="">…</option>${g.options.map((o,i)=>`<option value="${i}">${esc(o)}</option>`).join('')}</select>`:`<input class="gap" data-k="${k}" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…">`});
+  return {html:`<p class="cloze">${html}</p><button class="btn" id="ck" disabled>Prüfen</button>`,
+  bind:ans=>{const gs=[...app.querySelectorAll('.gap')];const upd=()=>{$('#ck').disabled=gs.some(x=>!x.value.trim())};gs.forEach(x=>{x.oninput=upd;x.onchange=upd});
+   $('#ck').onclick=()=>{let ok=true;gs.forEach(x=>{const g=q.gaps[+x.dataset.k];const good=g.options?+x.value===g.answer:[g.answer].concat(g.alt||[]).some(s=>norm(s)===norm(x.value));x.classList.add(good?'ok':'no');if(!good)ok=false});
+    ans(ok,'Lösung: '+esc(q.text).replace(/\{(\d+)\}/g,(m,k)=>{const g=q.gaps[+k];return '<b>'+esc(g.options?g.options[g.answer]:g.answer)+'</b>'}))}}}}
+ return {html:'<p>Unbekannter Fragetyp.</p>',bind:()=>{}}}
 function packQs(){store.pack=store.pack||[];const f=MODES[store.mode][1];return store.pack.map(id=>T.questions.find(q=>q.id===id)).filter(q=>q&&f(q))}
 let lastStage=null; // LZ der eben abgeschlossenen Etappe (für das Scrollen)
 function quiz(sts){setNav('',false);store.pack=store.pack||[];
@@ -108,28 +164,22 @@ function quiz(sts){setNav('',false);store.pack=store.pack||[];
   if(!packRound){const m=store.stages[T.id]||{},rest=stages(T).some(s=>!m[s.lz]&&!sts.some(x=>x.lz===s.lz)),pk=packQs();
    if(!rest&&pk.length){packRound=true;pk.forEach(q=>{fromPack.add(q.id);queue.push(q)});total+=pk.length;return show(queue.shift(),true)}}
   finish()};
- function show(q,intro){const body=q.type==='mc'?q.options.map((o,i)=>`<button class="opt" data-v="${i}">${esc(o)}</button>`).join(''):
-  q.type==='tf'?`<button class="opt" data-v="true">Richtig</button><button class="opt" data-v="false">Falsch</button>`:
-  `<div class="num"><input id="n" inputmode="decimal" autocomplete="off" placeholder="Zahl">${q.unit?`<b>${esc(q.unit)}</b>`:''}</div><button class="btn" id="ck">Prüfen</button>`;
-  const pk=fromPack.has(q.id);
+ function show(q,intro){const pk=fromPack.has(q.id),W=widget(q);
   view(`<div class="top"><button class="x" id="x" aria-label="Schliessen">×</button><div class="bar"><i style="width:${done/total*100}%"></i></div><span class="xp" id="xp">${xp} XP</span></div>
   ${intro?'<div class="card packintro">'+PACK+'<span><b>Rucksack-Runde</b><br><small>Noch einmal die Fragen aus deinem Rucksack.</small></span></div>':''}
-  <div class="card"><span class="tag">LZ ${q.goal}</span><span class="tag">${q.level}</span>${pk?'<span class="tag pk">'+PACK+' Rucksack</span>':''}<div class="q">${esc(q.prompt)}${q.image?`<img src="${q.image}" alt="Abbildung">`:''}</div>${body}<div id="fb"></div></div>`);
+  <div class="card" data-q="${q.id}"><span class="tag">LZ ${q.goal}</span><span class="tag">${q.level}</span>${pk?'<span class="tag pk">'+PACK+' Rucksack</span>':''}<div class="q">${esc(q.prompt)}</div>${imgHtml(q.image)}${W.html}<div id="fb"></div></div>`);
   $('#x').onclick=pfad;
-  const answer=(ok,el)=>{app.querySelectorAll('.opt,#ck,#n').forEach(b=>b.disabled=true);
-   if(q.type!=='num'){app.querySelectorAll('.opt').forEach(b=>{if(b.dataset.v===String(q.answer))b.classList.add('ok')});if(!ok&&el)el.classList.add('no')}
+  const answer=(ok,sol)=>{app.querySelectorAll('.card button:not(#nx), .card input, .card select').forEach(b=>b.disabled=true);
    const s=store.stats[q.id]=store.stats[q.id]||{r:0,w:0};ok?s.r++:s.w++;
    let gain=0;done++;
    if(ok){run++;store.run++;store.best=Math.max(store.best,store.run);gain=XP_OK+(run>=3?XP_BONUS:0);xp+=gain;store.xp+=gain;confetti();if(store.run>=10)award('serie10');store.pack=store.pack.filter(x=>x!==q.id)}
    else{run=0;store.run=0;if(!store.pack.includes(q.id))store.pack.push(q.id)}
    save();
-   const sol=q.type==='num'?` Lösung: ${q.answer}${q.unit?' '+q.unit:''}.`:'';
-   $('#fb').innerHTML=`<div class="fb ${ok?'ok':'no'}"><b>${ok?LOB[Math.floor(Math.random()*LOB.length)]+`<span class="plus">+${gain} XP${gain>XP_OK?' (Serienbonus)':''}</span>`+(pk?' Raus aus dem Rucksack.':''):'Noch nicht ganz. Die Frage kommt in deinen Rucksack.'}</b>${esc(q.explanation)}${esc(sol)}</div><button class="btn" id="nx">Weiter</button>`;
+   $('#fb').innerHTML=`<div class="fb ${ok?'ok':'no'}"><b>${ok?LOB[Math.floor(Math.random()*LOB.length)]+`<span class="plus">+${gain} XP${gain>XP_OK?' (Serienbonus)':''}</span>`+(pk?' Raus aus dem Rucksack.':''):'Noch nicht ganz. Die Frage kommt in deinen Rucksack.'}</b>${!ok&&sol?'<div class="sol">'+sol+'</div>':''}${esc(q.explanation)}</div><button class="btn" id="nx">Weiter</button>`;
    $('.bar i').style.width=done/total*100+'%';$('#xp').textContent=xp+' XP';$('#nx').onclick=next;$('#nx').scrollIntoView({behavior:'smooth',block:'nearest'})};
-  app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>answer(b.dataset.v===String(q.answer),b));
-  if(q.type==='num'){const f=()=>{const v=parseFloat($('#n').value.replace(/[’' ]/g,'').replace(',','.'));if(isNaN(v))return $('#n').focus();answer(Math.abs(v-q.answer)<=(q.tolerance||0)+1e-9)};$('#ck').onclick=f;$('#n').onkeydown=e=>{if(e.key==='Enter')f()}}}
+  W.bind(answer)}
  function finish(){const m=store.stages[T.id]=store.stages[T.id]||{};sts.forEach(s=>m[s.lz]=true);lastStage=sts[sts.length-1].lz;award('etappe');
-  if(T.questions.every(q=>(store.stats[q.id]||{}).r>0))award('meister');save();
+  if(stages(T).every(s=>m[s.lz]))award('meister');save();
   const pn=packQs().length;
   view(`<section class="hero"><div class="brand"><i></i>Etappe geschafft</div><h1>+${xp} XP</h1><p>${sts.length>1?'Alle Etappen':'Etappe LZ '+sts[0].lz} abgeschlossen. Schön gemacht!</p>${mtn()}</section>
   ${pn?`<div class="card packintro">${PACK}<span>Im Rucksack: ${pn} ${pn>1?'Fragen':'Frage'}<br><small>Sie kommen in der nächsten Etappe wieder.</small></span></div>`:''}
@@ -148,5 +198,5 @@ function uebersicht(){color(S.color);setNav('uebersicht',true);
  <button class="btn sec" id="rs">Fortschritt zurücksetzen</button>`);
  $('#rs').onclick=()=>{if(confirm('Ganzen Fortschritt auf diesem Gerät löschen?')){localStorage.removeItem(ST);location.reload()}}}
 
-fetch('questions.json').then(r=>r.json()).then(d=>{DATA=d;home()}).catch(()=>view('<div class="card">Die Fragen konnten nicht geladen werden.</div>'));
+Promise.all([fetch('questions.json').then(r=>r.json()),fetch('config.json').then(r=>r.json()).catch(()=>({topics:{}}))]).then(([d,c])=>{DATA=d;CFG=c;CFG.topics=CFG.topics||{};home()}).catch(()=>view('<div class="card">Die Fragen konnten nicht geladen werden.</div>'));
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js');
