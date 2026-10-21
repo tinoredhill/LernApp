@@ -132,12 +132,16 @@
     "id": "U008",
     "goal": 1,
     "level": "E",
-    "type": "num",
-    "prompt": "Wie viele Jahre liegen zwischen dem Buch des Kopernikus (1543) und Bessels Messung der Fixsternparallaxe (1838)?",
-    "answer": 295,
-    "tolerance": 0,
-    "unit": "Jahre",
-    "explanation": "1838 − 1543 = 295 Jahre. So lange fehlte ein direkter Beleg für die Bewegung der Erde um die Sonne."
+    "type": "mc",
+    "prompt": "Zwischen dem Buch des Kopernikus und Bessels Messung der Fixsternparallaxe liegen fast 300 Jahre. Was zeigt das?",
+    "options": [
+     "Das heliozentrische Weltbild setzte sich durch, lange bevor es einen direkten Beleg für die Bewegung der Erde gab.",
+     "Das Modell des Kopernikus geriet 300 Jahre lang in Vergessenheit.",
+     "Bessel widerlegte mit seiner Messung das Modell des Kopernikus.",
+     "Die Fixsternparallaxe war schon in der Antike gemessen worden."
+    ],
+    "answer": 0,
+    "explanation": "Kepler, Galilei und Newton stützten das Modell schon vorher. Den direkten Beleg für die Bewegung der Erde um die Sonne lieferte erst Bessel 1838."
    },
    {
     "id": "U009",
