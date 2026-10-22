@@ -90,3 +90,11 @@ select{min-height:48px;border-radius:12px;border:2px solid #2e464a;background:#1
 .sol{margin:4px 0 8px;padding:8px 10px;border-radius:10px;background:#0f1a1c80}.sol ol,.sol ul{margin:4px 0 0;padding-left:20px}
 .chipbtn[hidden]{display:none}
 .fb .sol b{display:inline;margin:0;font-size:inherit}
+
+.ptr{position:fixed;left:50%;top:calc(-44px + env(safe-area-inset-top));width:40px;height:40px;border-radius:50%;background:var(--sand,#f3e6c4);box-shadow:0 6px 18px rgba(0,0,0,.35);transform:translate(-50%,0);transition:transform .25s ease;z-index:60;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.ptr i{width:18px;height:18px;border:3px solid #1fa37a;border-top-color:transparent;border-radius:50%}.ptr.ready i{border-color:#16302b;border-top-color:transparent}
+.ptr.spin i{animation:ptrspin .8s linear infinite}@keyframes ptrspin{to{transform:rotate(360deg)}}
+.updbar{position:fixed;left:50%;transform:translateX(-50%);top:calc(14px + env(safe-area-inset-top));z-index:70;border:0;border-radius:999px;background:#1fa37a;color:#fff;font:inherit;font-weight:600;padding:12px 20px;box-shadow:0 8px 24px rgba(0,0,0,.4);max-width:calc(100% - 32px)}
+.updbar b{font-weight:800}
+@media (prefers-reduced-motion:reduce){.ptr{transition:none}.ptr.spin i{animation:none}}
+html,body{overscroll-behavior-y:contain}

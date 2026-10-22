@@ -199,4 +199,29 @@ function uebersicht(){color(S.color);setNav('uebersicht',true);
  $('#rs').onclick=()=>{if(confirm('Ganzen Fortschritt auf diesem Gerät löschen?')){localStorage.removeItem(ST);location.reload()}}}
 
 Promise.all([fetch('questions.json').then(r=>r.json()),fetch('config.json').then(r=>r.json()).catch(()=>({topics:{}}))]).then(([d,c])=>{DATA=d;CFG=c;CFG.topics=CFG.topics||{};home()}).catch(()=>view('<div class="card">Die Fragen konnten nicht geladen werden.</div>'));
-if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js');
+/* Aktualisieren: Pull-to-Refresh, Banner, Offline-Hinweis */
+let SCR='',PULLING=false,REG=null,PEND=false;const HAD=!!(navigator.serviceWorker&&navigator.serviceWorker.controller);
+home=(f=>function(){SCR='home';const r=f.apply(this,arguments);if(PEND)banner();return r})(home);themen=(f=>function(){SCR='themen';const r=f.apply(this,arguments);if(PEND)banner();return r})(themen);
+pfad=(f=>function(){SCR='pfad';const r=f.apply(this,arguments);if(PEND)banner();return r})(pfad);quiz=(f=>function(){SCR='quiz';return f.apply(this,arguments)})(quiz);
+const fresh=u=>fetch(u+'?fresh='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()});
+const sameData=(d,c)=>JSON.stringify(d)===JSON.stringify(DATA)&&JSON.stringify(c.topics||{})===JSON.stringify(CFG.topics||{});
+function banner(){if(SCR==='quiz'){PEND=true;return}PEND=false;if(document.querySelector('.updbar'))return;const b=document.createElement('button');b.className='updbar';b.innerHTML='<b>Neue Inhalte</b> – tippen zum Laden';b.onclick=()=>{b.disabled=true;b.textContent='Wird geladen …';applyUpdate()};document.body.appendChild(b)}
+function applyUpdate(){const w=REG&&(REG.waiting||REG.installing);if(w){PULLING=true;w.postMessage('skip');setTimeout(()=>location.reload(),4000)}else location.reload()}
+function rerender(){if(S&&S.id)S=DATA.subjects.find(x=>x.id===S.id)||S;if(T&&T.id&&S&&S.topics)T=S.topics.find(x=>x.id===T.id)||T;({home,themen,pfad})[SCR]?({home,themen,pfad})[SCR]():home()}
+async function checkUpdate(manual){if(!navigator.onLine){if(manual)toast('Keine Verbindung');return}
+ if(manual&&document.querySelector('.updbar')){applyUpdate();return}
+ try{if(REG)await REG.update();if(REG&&(REG.waiting||REG.installing)){if(manual){applyUpdate();return}banner();return}
+  const [d,c]=await Promise.all([fresh('questions.json'),fresh('config.json')]);if(!DATA)return;
+  if(!sameData(d,c)){if(manual&&SCR!=='quiz'){DATA=d;CFG=c;CFG.topics=CFG.topics||{};rerender();toast('Aktualisiert')}else banner()}else if(manual)toast('Alles aktuell')}
+ catch(e){if(manual)toast('Keine Verbindung')}}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').then(r=>{REG=r;r.addEventListener('updatefound',()=>{const n=r.installing;n&&n.addEventListener('statechange',()=>{if(n.state==='installed'&&navigator.serviceWorker.controller){PULLING?n.postMessage('skip'):banner()}})});checkUpdate(false)}).catch(()=>{});
+ navigator.serviceWorker.addEventListener('controllerchange',()=>{if(!HAD)return;if(PULLING)location.reload();else banner()})}
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')checkUpdate(false)});
+(()=>{const ind=document.createElement('div');ind.className='ptr';ind.innerHTML='<i></i>';document.body.appendChild(ind);let y0=null,dy=0,busy=false;
+ const ok=()=>['home','themen','pfad'].includes(SCR)&&!busy&&(window.scrollY||document.documentElement.scrollTop)<=0;
+ document.addEventListener('touchstart',e=>{y0=ok()&&e.touches.length===1?e.touches[0].clientY:null;dy=0},{passive:true});
+ document.addEventListener('touchmove',e=>{if(y0===null)return;dy=e.touches[0].clientY-y0;if(dy<=0){ind.style.transform='';return}if(e.cancelable)e.preventDefault();const d=Math.min(dy*.5,90);ind.style.transform=`translate(-50%,${d}px) rotate(${d*4}deg)`;ind.classList.toggle('ready',d>=60)},{passive:false});
+ document.addEventListener('touchend',async()=>{if(y0===null)return;y0=null;const go=Math.min(dy*.5,90)>=60;ind.classList.remove('ready');
+  if(!go){ind.style.transform='';return}busy=true;ind.classList.add('spin');ind.style.transform='translate(-50%,64px)';PULLING=true;
+  try{await checkUpdate(true)}finally{setTimeout(()=>{if(!(REG&&(REG.waiting||REG.installing)))PULLING=false},6000);setTimeout(()=>{ind.classList.remove('spin');ind.style.transform='';busy=false},350)}});
+ window.addEventListener('offline',()=>toast('Keine Verbindung'))})();
