@@ -1867,6 +1867,14 @@
      ]
     }
    ]
+  },
+  {
+   "id": "mi",
+   "name": "Medien und Informatik",
+   "short": "MI",
+   "color": "#8a5cd6",
+   "icon": "icons/fach-mi.svg",
+   "topics": []
   }
  ]
 }
