@@ -1,0 +1,795 @@
+{
+ "subject": "ma",
+ "status": "aktuell",
+ "quelle": "Spartan-117: 02 Unterrichtsmaterial\\Mathematik\\09 Klasse 9\\LU14 Pyramide und Kegel\\ (Theorieheft, Lernziele)",
+ "topic": {
+  "id": "mathe9-pyramide-kegel",
+  "name": "Pyramide und Kegel",
+  "goals": {
+   "1": "Körper erkennen, benennen und Eigenschaften beschreiben",
+   "2": "Grössen an einer Skizze zeigen und Fachbegriffe verwenden",
+   "3": "Prisma und Zylinder: Volumen und Oberfläche (Repetition)",
+   "4": "Volumeneinheiten umrechnen (cm³, dm³, m³, Liter)",
+   "5": "Pythagoras in Pyramide und Kegel (h, hs, k, s)",
+   "6": "Netz von Pyramide und Kegel, Mantel- und Oberfläche",
+   "7": "Begründen, warum Pyramide/Kegel ein Drittel von Prisma/Zylinder sind",
+   "8": "Volumen von Pyramide und Kegel",
+   "9": "Pyramiden im Würfel als Bruchteil und Prozent",
+   "10": "Kegel aus dem Kreissektor",
+   "11": "Kugel: Volumen und Oberfläche",
+   "12": "Formeln umstellen",
+   "13": "Zusammengesetzte Körper",
+   "14": "Sachaufgaben, Schätzen und Plausibilität",
+   "15": "Volumenänderung bei veränderten Längen begründen"
+  },
+  "questions": [
+   {
+    "id": "PK001",
+    "goal": 1,
+    "level": "G",
+    "type": "mc",
+    "prompt": "Wie viele Flächen, Kanten und Ecken hat eine quadratische Pyramide? (TH S. 4)",
+    "options": [
+     "5 Flächen, 8 Kanten, 4 Ecken",
+     "5 Flächen, 8 Kanten, 5 Ecken",
+     "4 Flächen, 8 Kanten, 5 Ecken",
+     "6 Flächen, 12 Kanten, 8 Ecken"
+    ],
+    "answer": 1,
+    "explanation": "1 Quadrat + 4 Dreiecke = 5 Flächen; 4 Grundkanten + 4 Seitenkanten = 8 Kanten; 4 Ecken unten + Spitze = 5 Ecken."
+   },
+   {
+    "id": "PK002",
+    "goal": 1,
+    "level": "G",
+    "type": "match",
+    "prompt": "Welcher Körper passt zu welchem Gegenstand? (TH S. 2, 4, 8, 10)",
+    "pairs": [
+     [
+      "Glacecornet",
+      "Kegel"
+     ],
+     [
+      "Konservendose",
+      "Zylinder"
+     ],
+     [
+      "Milchpackung",
+      "Prisma"
+     ],
+     [
+      "Glasbau vor dem Louvre",
+      "Pyramide"
+     ],
+     [
+      "Basketball",
+      "Kugel"
+     ]
+    ],
+    "explanation": "Cornet = Kegel, Dose = Zylinder, Packung = Prisma (Quader), Louvre = Pyramide, Ball = Kugel."
+   },
+   {
+    "id": "PK003",
+    "goal": 1,
+    "level": "E",
+    "type": "mc",
+    "prompt": "Eine Pyramide hat ein Sechseck als Grundfläche. Aus wie vielen Dreiecken besteht ihre Mantelfläche? (TH S. 4)",
+    "options": [
+     "6",
+     "7",
+     "5",
+     "12"
+    ],
+    "answer": 0,
+    "explanation": "Jede Grundkante trägt ein Seitendreieck. Ein Sechseck hat 6 Kanten, also 6 Dreiecke."
+   },
+   {
+    "id": "PK004",
+    "goal": 2,
+    "level": "G",
+    "type": "match",
+    "prompt": "Ordne den Nummern in der Skizze die Fachbegriffe zu. (TH S. 4)",
+    "pairs": [
+     [
+      "1",
+      "Seitenkante k"
+     ],
+     [
+      "2",
+      "Körperhöhe h"
+     ],
+     [
+      "3",
+      "Seitenhöhe hₛ"
+     ],
+     [
+      "4",
+      "Grundkante a"
+     ]
+    ],
+    "image": {
+     "src": "img/ma/pyramide-begriffe.svg",
+     "alt": "Quadratische Pyramide mit vier nummerierten Strecken",
+     "credit": "Eigene Grafik (SVG)"
+    },
+    "explanation": "1 führt von einer Ecke zur Spitze ($k$), 2 steht senkrecht auf der Mitte der Grundfläche ($h$), 3 führt von der Mitte einer Grundkante zur Spitze ($h_s$), 4 ist eine Seite des Quadrats ($a$)."
+   },
+   {
+    "id": "PK005",
+    "goal": 2,
+    "level": "G",
+    "type": "mc",
+    "prompt": "Welche Strecke in der Skizze ist die Mantellinie $s$ des Kegels? (TH S. 8)",
+    "options": [
+     "Strecke B",
+     "Strecke C",
+     "Strecke A",
+     "Keine, die Mantellinie ist gebogen"
+    ],
+    "answer": 2,
+    "image": {
+     "src": "img/ma/kegel-linien.svg",
+     "alt": "Kegel mit drei markierten Strecken A, B und C",
+     "credit": "Eigene Grafik (SVG)"
+    },
+    "explanation": "A führt vom Rand des Grundkreises schräg zur Spitze: das ist $s$. B ist die Körperhöhe $h$, C der Radius $r$."
+   },
+   {
+    "id": "PK006",
+    "goal": 2,
+    "level": "G",
+    "type": "mc",
+    "prompt": "Was ist die Seitenhöhe $h_s$ einer Pyramide? (TH S. 4)",
+    "options": [
+     "Die Höhe eines Seitendreiecks, von der Mitte der Grundkante zur Spitze",
+     "Die Kante von einer Ecke der Grundfläche zur Spitze",
+     "Der senkrechte Abstand von der Spitze zur Grundfläche",
+     "Die Diagonale der Grundfläche"
+    ],
+    "answer": 0,
+    "explanation": "$h_s$ liegt im Seitendreieck. Der senkrechte Abstand ist die Körperhöhe $h$, die Kante von der Ecke zur Spitze die Seitenkante $k$."
+   },
+   {
+    "id": "PK007",
+    "goal": 2,
+    "level": "E",
+    "type": "mc",
+    "prompt": "Für einen Kegel ist der Durchmesser $d$ gegeben. Jemand rechnet $G=\\pi\\cdot d^2$. Was stimmt? (TH S. 9)",
+    "options": [
+     "$G$ wird doppelt so gross wie richtig.",
+     "$G$ wird halb so gross wie richtig.",
+     "Die Rechnung stimmt.",
+     "$G$ wird 4-mal so gross wie richtig."
+    ],
+    "answer": 3,
+    "explanation": "Richtig ist $G=\\pi\\cdot r^2$ mit $r=d:2$. Weil $d=2\\cdot r$, ist $d^2=4\\cdot r^2$: das Resultat ist 4-mal zu gross."
+   },
+   {
+    "id": "PK008",
+    "goal": 2,
+    "level": "E",
+    "type": "mc",
+    "prompt": "Ein Turm bekommt ein Pyramidendach. Welche Fläche muss der Dachdecker eindecken? (TH S. 5)",
+    "options": [
+     "Die Mantelfläche $M$",
+     "$O+G$",
+     "Die Grundfläche $G$",
+     "Die Oberfläche $O$"
+    ],
+    "answer": 0,
+    "explanation": "Ein Dach hat keinen Boden: Dachfläche = Mantelfläche $M$, also nur die Seitendreiecke."
+   },
+   {
+    "id": "PK009",
+    "goal": 3,
+    "level": "G",
+    "type": "mc",
+    "prompt": "Warum gilt für Prisma und Zylinder $V=G\\cdot h$? (TH S. 2)",
+    "options": [
+     "Weil die Mantelfläche ein Rechteck ist.",
+     "Man stapelt dünne Platten der Grundfläche so hoch, wie der Körper ist.",
+     "Man multipliziert alle Kanten miteinander.",
+     "Weil Grund- und Deckfläche zusammen $2\\cdot G$ ergeben."
+    ],
+    "answer": 1,
+    "explanation": "Stellt man sich $G$ als 1 cm dicke Platte vor, braucht es $h$ solche Platten: Grundfläche mal Höhe."
+   },
+   {
+    "id": "PK010",
+    "goal": 3,
+    "level": "E",
+    "type": "tf",
+    "prompt": "Rollt man den Mantel eines Zylinders ab, entsteht ein Rechteck mit der Länge $2\\cdot\\pi\\cdot r$ und der Breite $h$. (TH S. 2)",
+    "answer": true,
+    "explanation": "Richtig. Die Länge ist der Umfang $u=2\\cdot\\pi\\cdot r$, darum $M=u\\cdot h=2\\cdot\\pi\\cdot r\\cdot h$."
+   },
+   {
+    "id": "PK011",
+    "goal": 4,
+    "level": "G",
+    "type": "match",
+    "prompt": "Ordne die gleich grossen Volumen zu. (TH S. 2, 12)",
+    "pairs": [
+     [
+      "1 L",
+      "1 dm³"
+     ],
+     [
+      "1 m³",
+      "1’000 L"
+     ],
+     [
+      "1 mL",
+      "1 cm³"
+     ],
+     [
+      "0.5 L",
+      "500 cm³"
+     ]
+    ],
+    "explanation": "Faktor 1’000: 1 m³ = 1’000 dm³ = 1’000 L, 1 dm³ = 1’000 cm³ = 1 L, 1 cm³ = 1 mL."
+   },
+   {
+    "id": "PK012",
+    "goal": 4,
+    "level": "G",
+    "type": "num",
+    "prompt": "Kopfrechnen: Ein Aquarium fasst 0.3 m³. Wie viele Liter sind das? (TH S. 12)",
+    "answer": 300,
+    "tolerance": 0,
+    "unit": "L",
+    "explanation": "1 m³ = 1’000 L, also 0.3 · 1’000 = 300 L."
+   },
+   {
+    "id": "PK013",
+    "goal": 4,
+    "level": "G",
+    "type": "cloze",
+    "prompt": "Rechne um. (TH S. 12)",
+    "text": "4’500 cm³ sind {0} dm³, also {1} Liter.",
+    "gaps": [
+     {
+      "options": [
+       "0.45",
+       "4.5",
+       "45",
+       "450"
+      ],
+      "answer": 1
+     },
+     {
+      "options": [
+       "0.45",
+       "4.5",
+       "45",
+       "450"
+      ],
+      "answer": 1
+     }
+    ],
+    "explanation": "4’500 : 1’000 = 4.5 dm³, und 1 dm³ = 1 L, also 4.5 L."
+   },
+   {
+    "id": "PK014",
+    "goal": 4,
+    "level": "E",
+    "type": "mc",
+    "prompt": "Schätzen: Ein Glacecornet (Kegel) ist innen etwa 12 cm tief, die Öffnung hat etwa 5 cm Durchmesser. Wie viel passt ungefähr hinein? (TH S. 9, 12)",
+    "options": [
+     "etwa 0.8 L",
+     "etwa 8 mL",
+     "etwa 80 mL",
+     "etwa 8 L"
+    ],
+    "answer": 2,
+    "explanation": "$V=\\frac{1}{3}\\cdot\\pi\\cdot 2.5^2\\cdot 12\\approx 78.5$ cm³, also rund 80 mL."
+   },
+   {
+    "id": "PK015",
+    "goal": 5,
+    "level": "G",
+    "type": "cloze",
+    "prompt": "Ergänze das versteckte rechtwinklige Dreieck im Kegel. (TH S. 8)",
+    "text": "Die Strecken $h$, $r$ und $s$ bilden ein rechtwinkliges Dreieck. Der rechte Winkel liegt beim {0}. Die Hypotenuse ist {1}.",
+    "gaps": [
+     {
+      "options": [
+       "Mittelpunkt des Grundkreises",
+       "Rand des Grundkreises",
+       "Spitze"
+      ],
+      "answer": 0
+     },
+     {
+      "options": [
+       "die Körperhöhe h",
+       "der Radius r",
+       "die Mantellinie s"
+      ],
+      "answer": 2
+     }
+    ],
+    "explanation": "$h$ steht senkrecht auf dem Mittelpunkt der Grundfläche. Gegenüber dem rechten Winkel liegt $s$: $s^2=r^2+h^2$."
+   },
+   {
+    "id": "PK016",
+    "goal": 5,
+    "level": "E",
+    "type": "mc",
+    "prompt": "Welche Reihenfolge gilt in jeder quadratischen Pyramide? (TH S. 5)",
+    "options": [
+     "$h=h_s<k$",
+     "$k<h_s<h$",
+     "$h_s<h<k$",
+     "$h<h_s<k$"
+    ],
+    "answer": 3,
+    "explanation": "In Dreieck 1 ist $h_s$ Hypotenuse, also $h<h_s$. In Dreieck 2 ist $k$ Hypotenuse, also $h_s<k$."
+   },
+   {
+    "id": "PK017",
+    "goal": 5,
+    "level": "G",
+    "type": "mc",
+    "prompt": "Welches rechtwinklige Dreieck im Innern der Pyramide enthält die Körperhöhe $h$? (TH S. 5)",
+    "options": [
+     "$h$, $\\frac{a}{2}$ und $h_s$, Hypotenuse $h_s$",
+     "$h$, $\\frac{a}{2}$ und $h_s$, Hypotenuse $h$",
+     "$h$, $h_s$ und $k$, Hypotenuse $k$",
+     "$h$, $a$ und $h_s$, Hypotenuse $a$"
+    ],
+    "answer": 0,
+    "explanation": "Dreieck 1: Körperhöhe $h$, halbe Grundkante $\\frac{a}{2}$ und Seitenhöhe $h_s$ als Hypotenuse."
+   },
+   {
+    "id": "PK018",
+    "goal": 5,
+    "level": "E",
+    "type": "num",
+    "prompt": "Kopfrechnen: Ein Kegel hat den Radius 6 cm und die Mantellinie 10 cm. Wie hoch ist er? (TH S. 9)",
+    "answer": 8,
+    "tolerance": 0,
+    "unit": "cm",
+    "explanation": "$h=\\sqrt{s^2-r^2}=\\sqrt{100-36}=\\sqrt{64}=8$ cm."
+   },
+   {
+    "id": "PK019",
+    "goal": 6,
+    "level": "G",
+    "type": "mc",
+    "prompt": "Du schneidest die Mantelfläche eines Kegels entlang einer Mantellinie auf und legst sie flach. Was entsteht? (TH S. 8)",
+    "options": [
+     "Ein Dreieck, dessen Höhe die Körperhöhe $h$ ist",
+     "Ein Kreissektor, dessen Radius die Mantellinie $s$ ist",
+     "Ein Kreissektor, dessen Radius der Kegelradius $r$ ist",
+     "Ein Rechteck mit der Länge $2\\cdot\\pi\\cdot r$"
+    ],
+    "answer": 1,
+    "explanation": "Es entsteht ein Kreissektor («Kuchenstück»). Sein Radius ist $s$, sein Bogen ist so lang wie der Umfang des Grundkreises."
+   },
+   {
+    "id": "PK020",
+    "goal": 6,
+    "level": "G",
+    "type": "mc",
+    "prompt": "Woraus besteht das Netz einer quadratischen Pyramide? (TH S. 4)",
+    "options": [
+     "1 Quadrat und 4 Rechtecke",
+     "4 gleiche Dreiecke",
+     "2 Quadrate und 4 Rechtecke",
+     "1 Quadrat und 4 gleiche Dreiecke"
+    ],
+    "answer": 3,
+    "explanation": "Die Grundfläche ist ein Quadrat, die Mantelfläche besteht aus 4 gleichen Seitendreiecken."
+   },
+   {
+    "id": "PK021",
+    "goal": 6,
+    "level": "G",
+    "type": "cloze",
+    "prompt": "Ergänze zum Kegelnetz. (TH S. 8)",
+    "text": "Der Bogen des Kreissektors ist so lang wie der {0} des Grundkreises.",
+    "gaps": [
+     {
+      "options": [
+       "Radius",
+       "Durchmesser",
+       "Umfang"
+      ],
+      "answer": 2
+     }
+    ],
+    "explanation": "Beim Aufrollen legt sich der Bogen genau um den Grundkreis: $b=2\\cdot\\pi\\cdot r$."
+   },
+   {
+    "id": "PK022",
+    "goal": 6,
+    "level": "E",
+    "type": "mc",
+    "prompt": "Mit welchem Term berechnet man die Fläche eines Seitendreiecks der quadratischen Pyramide? (TH S. 4–5)",
+    "options": [
+     "$\\frac{a\\cdot k}{2}$",
+     "$\\frac{a\\cdot h_s}{2}$",
+     "$a\\cdot h_s$",
+     "$\\frac{a\\cdot h}{2}$"
+    ],
+    "answer": 1,
+    "explanation": "Grundseite $a$, Höhe des Dreiecks $h_s$. Die Körperhöhe $h$ liegt nicht im Seitendreieck."
+   },
+   {
+    "id": "PK023",
+    "goal": 7,
+    "level": "G",
+    "type": "mc",
+    "prompt": "Warum steht in der Volumenformel der Pyramide der Faktor $\\frac{1}{3}$? (TH S. 6)",
+    "options": [
+     "Weil eine Pyramide drei Seitenflächen hat",
+     "Weil die Spitze ein Drittel der Höhe ausmacht",
+     "Weil man die Grundfläche durch 3 teilen muss, da sie ein Dreieck ist",
+     "Weil man eine hohle Pyramide 3-mal füllen muss, bis das Prisma mit gleicher Grundfläche und gleicher Höhe voll ist"
+    ],
+    "answer": 3,
+    "explanation": "Umschüttversuch: Das Prisma mit gleichem $G$ und $h$ fasst genau 3 Pyramidenfüllungen. Darum $V=\\frac{1}{3}\\cdot G\\cdot h$."
+   },
+   {
+    "id": "PK024",
+    "goal": 7,
+    "level": "G",
+    "type": "tf",
+    "prompt": "Der Faktor $\\frac{1}{3}$ gilt nur für Pyramiden mit quadratischer Grundfläche. (TH S. 6)",
+    "answer": false,
+    "explanation": "Falsch. $V=\\frac{1}{3}\\cdot G\\cdot h$ gilt für jede Pyramide, ob die Grundfläche ein Quadrat, Rechteck oder Dreieck ist."
+   },
+   {
+    "id": "PK025",
+    "goal": 7,
+    "level": "G",
+    "type": "mc",
+    "prompt": "Würfel-Trick: Man verbindet die Mitte eines Würfels mit allen Ecken. In wie viele gleiche Pyramiden zerfällt der Würfel? (TH S. 6)",
+    "options": [
+     "12",
+     "8",
+     "6",
+     "4"
+    ],
+    "answer": 2,
+    "explanation": "Eine Pyramide pro Würfelfläche, also 6."
+   },
+   {
+    "id": "PK026",
+    "goal": 7,
+    "level": "E",
+    "type": "mc",
+    "prompt": "Beim Würfel-Trick hat jede Pyramide $G=a^2$ und $h=\\frac{a}{2}$. Warum folgt daraus der Faktor $\\frac{1}{3}$? (TH S. 6)",
+    "options": [
+     "Weil jede Pyramide 3 Seitenflächen hat",
+     "Weil der Würfel 3 Paare gegenüberliegender Flächen hat",
+     "Weil ein Sechstel des Würfels gleich $\\frac{1}{3}\\cdot a^2\\cdot\\frac{a}{2}$ ist",
+     "Weil die Pyramidenhöhe ein Drittel der Würfelkante ist"
+    ],
+    "answer": 2,
+    "explanation": "$V=\\frac{a^3}{6}=\\frac{1}{3}\\cdot a^2\\cdot\\frac{a}{2}=\\frac{1}{3}\\cdot G\\cdot h$."
+   },
+   {
+    "id": "PK027",
+    "goal": 8,
+    "level": "G",
+    "type": "mc",
+    "prompt": "Für das Volumen dieser Pyramide wird gerechnet: $V=\\frac{1}{3}\\cdot a^2\\cdot h_s$. Was ist falsch? (TH S. 7)",
+    "options": [
+     "Man hätte $a$ statt $a^2$ einsetzen müssen.",
+     "Man hätte $\\frac{1}{2}$ statt $\\frac{1}{3}$ nehmen müssen.",
+     "Man hätte die Körperhöhe $h$ statt der Seitenhöhe $h_s$ einsetzen müssen.",
+     "Nichts, die Rechnung stimmt."
+    ],
+    "answer": 2,
+    "image": {
+     "src": "img/ma/pyramide-fehler.svg",
+     "alt": "Quadratische Pyramide mit Körperhöhe h, Seitenhöhe hs und Grundkante a",
+     "credit": "Eigene Grafik (SVG)"
+    },
+    "explanation": "Im Volumen steht immer die senkrechte Körperhöhe $h$, nie $h_s$. Ist nur $h_s$ bekannt, rechnet man $h$ zuerst mit Pythagoras aus. Weil $h<h_s$, wäre das Resultat zu gross."
+   },
+   {
+    "id": "PK028",
+    "goal": 8,
+    "level": "G",
+    "type": "mc",
+    "prompt": "Welche Formel gibt das Volumen eines Kegels? (TH S. 9)",
+    "options": [
+     "$V=\\pi\\cdot r\\cdot s$",
+     "$V=\\frac{1}{3}\\cdot\\pi\\cdot r^2\\cdot s$",
+     "$V=\\pi\\cdot r^2\\cdot h$",
+     "$V=\\frac{1}{3}\\cdot\\pi\\cdot r^2\\cdot h$"
+    ],
+    "answer": 3,
+    "explanation": "Ein Drittel vom Zylinder mit gleichem $r$ und $h$. $\\pi\\cdot r\\cdot s$ ist die Mantelfläche."
+   },
+   {
+    "id": "PK029",
+    "goal": 8,
+    "level": "E",
+    "type": "mc",
+    "prompt": "Ein Kegel und ein Zylinder haben den gleichen Radius. Wann haben sie das gleiche Volumen? (TH S. 9)",
+    "options": [
+     "Wenn der Kegel gleich hoch ist",
+     "Wenn der Kegel doppelt so hoch ist",
+     "Wenn der Kegel 3-mal so hoch ist",
+     "Wenn der Kegel einen Drittel so hoch ist"
+    ],
+    "answer": 2,
+    "explanation": "$\\frac{1}{3}\\cdot\\pi\\cdot r^2\\cdot(3h)=\\pi\\cdot r^2\\cdot h$."
+   },
+   {
+    "id": "PK030",
+    "goal": 9,
+    "level": "G",
+    "type": "mc",
+    "prompt": "Eine Pyramide hat den Würfelboden als Grundfläche, ihre Spitze liegt auf der Deckfläche. Welcher Anteil des Würfelvolumens ist das? (TH S. 6)",
+    "options": [
+     "$\\frac{1}{4}$",
+     "$\\frac{1}{6}$",
+     "$\\frac{1}{2}$",
+     "$\\frac{1}{3}$"
+    ],
+    "answer": 3,
+    "explanation": "Gleiche Grundfläche und gleiche Höhe wie der Würfel (ein Prisma): $\\frac{1}{3}$."
+   },
+   {
+    "id": "PK031",
+    "goal": 9,
+    "level": "E",
+    "type": "mc",
+    "prompt": "Beim Würfel-Trick ist jede Pyramide ein Sechstel des Würfels. Wie viel Prozent sind das? (TH S. 6)",
+    "options": [
+     "33.33 %",
+     "50 %",
+     "25 %",
+     "16.67 %"
+    ],
+    "answer": 3,
+    "explanation": "$\\frac{1}{6}=1:6\\approx 0.1667=16.67$ %."
+   },
+   {
+    "id": "PK032",
+    "goal": 9,
+    "level": "G",
+    "type": "num",
+    "prompt": "Kopfrechnen: Ein Würfel hat die Kante 6 cm. Eine Pyramide hat den Würfelboden als Grundfläche und die Spitze auf der Deckfläche. Wie gross ist ihr Volumen? (TH S. 6–7)",
+    "answer": 72,
+    "tolerance": 0,
+    "unit": "cm³",
+    "explanation": "$V=\\frac{1}{3}\\cdot 6^2\\cdot 6=\\frac{216}{3}=72$ cm³."
+   },
+   {
+    "id": "PK033",
+    "goal": 10,
+    "level": "G",
+    "type": "mc",
+    "prompt": "Mit welcher Formel berechnet man den Zentriwinkel $\\alpha$ im Kegelnetz? (TH S. 8–9)",
+    "options": [
+     "$\\alpha=\\frac{r}{s}\\cdot 360^\\circ$",
+     "$\\alpha=\\frac{s}{r}\\cdot 360^\\circ$",
+     "$\\alpha=\\frac{h}{s}\\cdot 360^\\circ$",
+     "$\\alpha=\\frac{r}{h}\\cdot 360^\\circ$"
+    ],
+    "answer": 0,
+    "explanation": "Der Bogen $2\\cdot\\pi\\cdot r$ ist der Anteil $\\frac{r}{s}$ vom ganzen Kreis $2\\cdot\\pi\\cdot s$."
+   },
+   {
+    "id": "PK034",
+    "goal": 10,
+    "level": "E",
+    "type": "mc",
+    "prompt": "Ein Kegel wird aus einem Halbkreis gerollt ($\\alpha=180^\\circ$). Was gilt? (TH S. 8–9)",
+    "options": [
+     "$r=s$",
+     "$r=\\frac{s}{4}$",
+     "$r=2\\cdot s$",
+     "$r=\\frac{s}{2}$"
+    ],
+    "answer": 3,
+    "explanation": "$\\frac{r}{s}\\cdot 360^\\circ=180^\\circ$ ergibt $\\frac{r}{s}=\\frac{1}{2}$, also $r=\\frac{s}{2}$."
+   },
+   {
+    "id": "PK035",
+    "goal": 11,
+    "level": "G",
+    "type": "mc",
+    "prompt": "Wie viele Grosskreise sind zusammen so gross wie die Oberfläche einer Kugel? (TH S. 10)",
+    "options": [
+     "3",
+     "6",
+     "4",
+     "2"
+    ],
+    "answer": 2,
+    "explanation": "Archimedes: $O=4\\cdot\\pi\\cdot r^2$, das sind 4 Grosskreise."
+   },
+   {
+    "id": "PK036",
+    "goal": 11,
+    "level": "G",
+    "type": "tf",
+    "prompt": "Eine Kugel hat wie der Kegel ein Netz. (TH S. 10)",
+    "answer": false,
+    "explanation": "Falsch. Die Kugeloberfläche lässt sich nicht flach ausbreiten (Orangenschale)."
+   },
+   {
+    "id": "PK037",
+    "goal": 11,
+    "level": "E",
+    "type": "mc",
+    "prompt": "Kegel, Halbkugel und Zylinder haben den gleichen Radius $r$ und die Höhe $h=r$. Wie verhalten sich ihre Volumen? (TH S. 10)",
+    "options": [
+     "1 : 3 : 4",
+     "1 : 2 : 3",
+     "1 : 1 : 3",
+     "2 : 3 : 4"
+    ],
+    "answer": 1,
+    "explanation": "$\\frac{1}{3}\\pi r^3:\\frac{2}{3}\\pi r^3:\\pi r^3=1:2:3$."
+   },
+   {
+    "id": "PK038",
+    "goal": 12,
+    "level": "G",
+    "type": "mc",
+    "prompt": "Wie stellt man $V=\\frac{1}{3}\\cdot G\\cdot h$ nach $h$ um? (TH S. 7)",
+    "options": [
+     "$h=\\frac{G}{3\\cdot V}$",
+     "$h=3\\cdot V\\cdot G$",
+     "$h=\\frac{V}{3\\cdot G}$",
+     "$h=\\frac{3\\cdot V}{G}$"
+    ],
+    "answer": 3,
+    "explanation": "Beide Seiten mal 3, dann durch $G$: $h=\\frac{3\\cdot V}{G}$."
+   },
+   {
+    "id": "PK039",
+    "goal": 12,
+    "level": "G",
+    "type": "mc",
+    "prompt": "Von einem Kegel kennt man $s$ und $r$. Wie berechnet man $h$? (TH S. 9)",
+    "options": [
+     "$h=s-r$",
+     "$h=\\sqrt{s^2+r^2}$",
+     "$h=\\sqrt{r^2-s^2}$",
+     "$h=\\sqrt{s^2-r^2}$"
+    ],
+    "answer": 3,
+    "explanation": "$s$ ist die Hypotenuse: $h^2=s^2-r^2$."
+   },
+   {
+    "id": "PK040",
+    "goal": 12,
+    "level": "E",
+    "type": "mc",
+    "prompt": "Wie berechnet man den Radius einer Kugel aus ihrer Oberfläche $O$? (TH S. 11)",
+    "options": [
+     "$r=\\sqrt{4\\cdot\\pi\\cdot O}$",
+     "$r=\\sqrt[3]{\\frac{O}{4\\cdot\\pi}}$",
+     "$r=\\sqrt{\\frac{O}{4\\cdot\\pi}}$",
+     "$r=\\frac{O}{4\\cdot\\pi}$"
+    ],
+    "answer": 2,
+    "explanation": "$O=4\\cdot\\pi\\cdot r^2$ ⇒ $r^2=\\frac{O}{4\\cdot\\pi}$ ⇒ Quadratwurzel."
+   },
+   {
+    "id": "PK041",
+    "goal": 13,
+    "level": "G",
+    "type": "mc",
+    "prompt": "Ein Haus (Quader) hat ein Pyramidendach. Welche Fläche gehört NICHT zur Oberfläche des ganzen Körpers? (TH S. 12)",
+    "options": [
+     "Der Boden",
+     "Die Wände",
+     "Die Mantelfläche des Daches",
+     "Die Fläche, an der Dach und Quader zusammenstossen"
+    ],
+    "answer": 3,
+    "explanation": "Die Klebefläche zwischen zwei Teilkörpern sieht man von aussen nicht. Sie zählt nicht zur Oberfläche."
+   },
+   {
+    "id": "PK042",
+    "goal": 13,
+    "level": "E",
+    "type": "order",
+    "prompt": "Ordne die 4 Schritte für zusammengesetzte Körper. (TH S. 12)",
+    "items": [
+     "Zerlegen und Skizze beschriften",
+     "Masse den Teilkörpern zuordnen, fehlende Strecken mit Pythagoras",
+     "Teilkörper berechnen und addieren oder subtrahieren",
+     "Umrechnen und Antwortsatz schreiben"
+    ],
+    "explanation": "Zerlegen – Masse zuordnen – Teilkörper berechnen – Umrechnen und Antwortsatz."
+   },
+   {
+    "id": "PK043",
+    "goal": 14,
+    "level": "G",
+    "type": "mc",
+    "prompt": "Für das Volumen eines Verkehrs-Leitkegels kommt 3.2 m³ heraus. Was sagst du dazu? (TH S. 12)",
+    "options": [
+     "Zu klein: Es müssten etwa 30 m³ sein.",
+     "Man kann das nicht abschätzen.",
+     "Plausibel, Leitkegel sind schwer.",
+     "Viel zu gross: Ein Leitkegel fasst nur wenige Liter."
+    ],
+    "answer": 3,
+    "explanation": "3.2 m³ = 3’200 L, so viel wie ein grosser Wassertank. Ein Leitkegel fasst nur wenige Liter."
+   },
+   {
+    "id": "PK044",
+    "goal": 14,
+    "level": "G",
+    "type": "num",
+    "prompt": "Kopfrechnen: 1 m³ Kies wiegt 1.8 t. Wie viele Tonnen wiegen 5 m³ Kies? (TH S. 12)",
+    "answer": 9,
+    "tolerance": 0,
+    "unit": "t",
+    "explanation": "$m=\\rho\\cdot V=1.8\\cdot 5=9$ t."
+   },
+   {
+    "id": "PK045",
+    "goal": 14,
+    "level": "E",
+    "type": "mc",
+    "prompt": "Schätzen: Ein Silo fasst rund 80 m³ Weizen (0.78 t/m³). Wie schwer ist die volle Ladung ungefähr? (TH S. 12–13)",
+    "options": [
+     "etwa 6 t",
+     "etwa 100 t",
+     "etwa 600 t",
+     "etwa 60 t"
+    ],
+    "answer": 3,
+    "explanation": "$0.78\\cdot 80\\approx 62$ t, also rund 60 t. Etwas weniger als 80 t, weil Weizen leichter ist als Wasser."
+   },
+   {
+    "id": "PK046",
+    "goal": 15,
+    "level": "E",
+    "type": "mc",
+    "prompt": "Bei einem Kegel wird der Radius $r$ verdoppelt, die Höhe $h$ bleibt gleich. Was passiert mit dem Volumen? (AH3, AH5)",
+    "options": [
+     "Es bleibt gleich, weil $h$ gleich bleibt.",
+     "Es wird 4-mal so gross.",
+     "Es wird 8-mal so gross.",
+     "Es verdoppelt sich."
+    ],
+    "answer": 1,
+    "explanation": "In $V=\\frac{1}{3}\\cdot\\pi\\cdot r^2\\cdot h$ steht $r$ im Quadrat: $(2r)^2=4r^2$."
+   },
+   {
+    "id": "PK047",
+    "goal": 15,
+    "level": "G",
+    "type": "mc",
+    "prompt": "Bei einer Pyramide wird die Höhe halbiert, die Grundfläche bleibt gleich. Was passiert mit dem Volumen? (AH3)",
+    "options": [
+     "Es bleibt gleich.",
+     "Es wird halb so gross.",
+     "Es wird ein Viertel so gross.",
+     "Es wird ein Drittel so gross."
+    ],
+    "answer": 1,
+    "explanation": "$V=\\frac{1}{3}\\cdot G\\cdot h$: $h$ steht einfach (nicht im Quadrat), also halbes $h$ = halbes $V$."
+   },
+   {
+    "id": "PK048",
+    "goal": 15,
+    "level": "E",
+    "type": "mc",
+    "prompt": "Bei einem Kegel werden Radius und Höhe verdoppelt. Wie verändert sich das Volumen? (AH3, AH5)",
+    "options": [
+     "8-mal so gross",
+     "6-mal so gross",
+     "4-mal so gross",
+     "2-mal so gross"
+    ],
+    "answer": 0,
+    "explanation": "$r^2$ wird 4-mal, $h$ 2-mal so gross: $4\\cdot 2=8$."
+   }
+  ]
+ }
+}
