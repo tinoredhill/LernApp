@@ -393,7 +393,7 @@
        "goal": 2,
        "level": "G",
        "type": "tf",
-       "prompt": "Licht breitet sich in einem einheitlichen Stoff geradlinig aus.",
+       "prompt": "Licht breitet sich in Luft, Wasser oder Glas (immer im gleichen Stoff) geradlinig aus.",
        "answer": true,
        "explanation": "Richtig. Deshalb zeichnen wir Licht als Strahlen mit dem Lineal."
       },
@@ -402,7 +402,7 @@
        "goal": 2,
        "level": "G",
        "type": "mc",
-       "prompt": "Was zeigt ein Lichtstrahl im Strahlenmodell?",
+       "prompt": "Was zeigt ein gezeichneter Lichtstrahl (Linie mit Pfeil)?",
        "options": [
         "Die Wärme",
         "Die Helligkeit",
@@ -425,7 +425,7 @@
         "Schatten haben scharfe Ränder, die zur Form des Körpers passen."
        ],
        "answer": 3,
-       "explanation": "Die Randstrahlen gehen gerade an den Kanten vorbei; so entsteht ein Schatten in der Form des Körpers."
+       "explanation": "Die äussersten Lichtstrahlen gehen gerade an den Kanten vorbei; so entsteht ein Schatten in der Form des Körpers."
       },
       {
        "id": "O008",
@@ -459,7 +459,7 @@
        "goal": 3,
        "level": "G",
        "type": "tf",
-       "prompt": "Das Auge sendet Sehstrahlen aus, die auf Gegenstände treffen.",
+       "prompt": "Das Auge schickt Strahlen aus, die auf Gegenstände treffen.",
        "answer": false,
        "explanation": "Falsch. Licht gelangt vom Gegenstand ins Auge, nicht umgekehrt."
       },
@@ -498,16 +498,16 @@
        "goal": 4,
        "level": "G",
        "type": "tf",
-       "prompt": "Bei einer einzigen punktförmigen Lampe gibt es keinen Halbschatten.",
+       "prompt": "Bei einer einzigen punktförmigen Lampe (sehr kleiner Lichtpunkt) gibt es keinen Halbschatten.",
        "answer": true,
-       "explanation": "Richtig. Halbschatten entsteht erst bei mehreren Lampen oder einer ausgedehnten Lichtquelle."
+       "explanation": "Richtig. Halbschatten entsteht erst bei mehreren Lampen oder einer grossen Lichtquelle (z. B. Leuchtstoffröhre)."
       },
       {
        "id": "O013",
        "goal": 4,
        "level": "E",
        "type": "mc",
-       "prompt": "Ein Stab wird von zwei Lampen beleuchtet. Du schiebst den Schirm weiter weg. Was passiert mit dem Kernschatten?",
+       "prompt": "Ein Stab wird von zwei Lampen beleuchtet. Du schiebst die Wand, auf die der Schatten fällt, weiter vom Stab weg. Was passiert mit dem Kernschatten?",
        "options": [
         "Er wird zum Halbschatten der anderen Lampe.",
         "Er wird kleiner.",
@@ -515,14 +515,14 @@
         "Er wird grösser."
        ],
        "answer": 1,
-       "explanation": "Die Randstrahlen der beiden Lampen kreuzen sich hinter dem Stab, der Kernschatten läuft spitz zu."
+       "explanation": "Die äussersten Lichtstrahlen der beiden Lampen kreuzen sich hinter dem Stab. Darum wird der Kernschatten weiter hinten schmaler."
       },
       {
        "id": "O014",
        "goal": 4,
        "level": "E",
        "type": "mc",
-       "prompt": "Ein Stab wird von zwei Lampen beleuchtet: L1 unten, L2 oben. Welche Lampe beleuchtet den unteren Halbschatten?",
+       "prompt": "Ein Stab wird von zwei Lampen beleuchtet: Lampe L1 ist unten, Lampe L2 oben. Welche Lampe beleuchtet den unteren Halbschatten?",
        "options": [
         "L2, die obere Lampe",
         "L1, die untere Lampe",
@@ -530,7 +530,7 @@
         "Keine"
        ],
        "answer": 1,
-       "explanation": "Licht von L2 fällt schräg nach unten und wird vom Stab abgedeckt. Das Licht von L1 gelangt von unten am Stab vorbei."
+       "explanation": "Licht von L2 fällt schräg nach unten und wird vom Stab blockiert. Das Licht von L1 gelangt von unten am Stab vorbei."
       },
       {
        "id": "O015",
@@ -573,7 +573,7 @@
         "Die Erde dreht sich zu schnell."
        ],
        "answer": 2,
-       "explanation": "Ausserhalb des Kernschattens liegt man im Halbschatten und sieht nur eine teilweise Finsternis."
+       "explanation": "Ausserhalb des Kernschattens liegt man im Halbschatten und sieht nur eine teilweise Sonnenfinsternis: Die Sonne ist nur zum Teil verdeckt."
       },
       {
        "id": "O018",
@@ -582,7 +582,7 @@
        "type": "tf",
        "prompt": "Bei einer Mondfinsternis liegt der Mond im Kernschatten der Erde.",
        "answer": true,
-       "explanation": "Richtig. Darum sieht man sie überall, wo gerade Nacht ist."
+       "explanation": "Richtig. Darum sieht man sie überall auf der Erde, wo gerade Nacht ist."
       },
       {
        "id": "O019",
@@ -609,14 +609,14 @@
          "answer": 0
         }
        ],
-       "explanation": "α = α’. Das Lot steht senkrecht auf dem Spiegel."
+       "explanation": "Einfallswinkel α = Reflexionswinkel α’. Das Lot steht senkrecht auf dem Spiegel."
       },
       {
        "id": "O020",
        "goal": 6,
        "level": "G",
        "type": "num",
-       "prompt": "Ein Strahl trifft unter 35° zum Lot auf einen Spiegel. Wie gross ist der Reflexionswinkel?",
+       "prompt": "Ein Strahl trifft auf einen Spiegel. Der Winkel zwischen Strahl und Lot beträgt 35°. Wie gross ist der Reflexionswinkel?",
        "answer": 35,
        "tolerance": 0,
        "unit": "°",
@@ -627,7 +627,7 @@
        "goal": 6,
        "level": "E",
        "type": "num",
-       "prompt": "Ein Strahl trifft unter 20° zur Spiegelfläche auf. Wie gross ist der Einfallswinkel?",
+       "prompt": "Ein Strahl trifft auf einen Spiegel. Der Winkel zwischen Strahl und Spiegel beträgt 20°. Wie gross ist der Einfallswinkel?",
        "answer": 70,
        "tolerance": 0,
        "unit": "°",
@@ -638,11 +638,11 @@
        "goal": 6,
        "level": "E",
        "type": "num",
-       "prompt": "Einfallender und reflektierter Strahl bilden zusammen 100°. Wie gross ist der Einfallswinkel?",
+       "prompt": "Der Winkel zwischen einfallendem und reflektiertem Strahl beträgt 100°. Wie gross ist der Einfallswinkel?",
        "answer": 50,
        "tolerance": 0,
        "unit": "°",
-       "explanation": "Das Lot halbiert den Winkel: 100° : 2 = 50°."
+       "explanation": "Das Lot teilt den Winkel in zwei gleiche Hälften: 100° : 2 = 50°."
       },
       {
        "id": "O023",
@@ -651,29 +651,29 @@
        "type": "tf",
        "prompt": "Das Spiegelbild liegt gleich weit hinter dem Spiegel wie der Gegenstand davor.",
        "answer": true,
-       "explanation": "Richtig. Gegenstand und Bild liegen symmetrisch zum Spiegel."
+       "explanation": "Richtig. Gegenstand und Bild liegen spiegelbildlich, gleich weit vom Spiegel entfernt."
       },
       {
        "id": "O024",
        "goal": 7,
        "level": "G",
        "type": "mc",
-       "prompt": "Warum heisst das Bild in einem ebenen Spiegel virtuell?",
+       "prompt": "Warum heisst das Bild in einem ebenen Spiegel virtuell (scheinbar)?",
        "options": [
         "Es ist farbig.",
         "Es steht auf dem Kopf.",
         "Es ist kleiner als der Gegenstand.",
-        "Hinter dem Spiegel kommt kein Licht hin; man kann es nicht auf einem Schirm auffangen."
+        "Hinter dem Spiegel kommt kein Licht hin; man kann es nicht auf einer Wand oder einem Blatt auffangen."
        ],
        "answer": 3,
-       "explanation": "Die Strahlen scheinen nur von hinter dem Spiegel zu kommen."
+       "explanation": "Die Strahlen sehen nur so aus, als kämen sie von hinter dem Spiegel."
       },
       {
        "id": "O025",
        "goal": 7,
        "level": "E",
        "type": "num",
-       "prompt": "Lena ist 1.60 m gross. Wie hoch muss ein Wandspiegel mindestens sein, damit sie sich ganz sieht? (in cm)",
+       "prompt": "Lena ist 1.60 m gross. Wie hoch muss ein Wandspiegel mindestens sein, damit sie sich ganz sieht? Gib die Antwort in cm an.",
        "answer": 80,
        "tolerance": 0,
        "unit": "cm",
@@ -684,7 +684,7 @@
        "goal": 7,
        "level": "E",
        "type": "mc",
-       "prompt": "Tim geht vom Spiegel zurück. Wie ändert sich die nötige Mindestgrösse des Spiegels?",
+       "prompt": "Tim geht einige Schritte vom Spiegel weg. Wie ändert sich die nötige Mindestgrösse des Spiegels?",
        "options": [
         "Sie wird kleiner.",
         "Sie wird grösser.",
@@ -692,7 +692,7 @@
         "Sie wird doppelt so gross."
        ],
        "answer": 2,
-       "explanation": "Die Reflexionspunkte liegen immer in der Mitte zwischen Auge und Scheitel bzw. Füssen."
+       "explanation": "Die Reflexionspunkte liegen immer in der Mitte zwischen dem Auge und dem Kopf bzw. den Füssen."
       },
       {
        "id": "O027",
@@ -711,10 +711,10 @@
         ],
         [
          "Brennpunkt F",
-         "Hier treffen sich achsenparallele Strahlen nach dem Hohlspiegel."
+         "Hier treffen sich achsenparallele Strahlen (parallel zur Achse) nach dem Hohlspiegel."
         ]
        ],
-       "explanation": "Hohlspiegel = Konkavspiegel, Wölbspiegel = Konvexspiegel."
+       "explanation": "Hohlspiegel = Konkavspiegel (nach innen gewölbt), Wölbspiegel = Konvexspiegel (nach aussen gewölbt)."
       },
       {
        "id": "O028",
@@ -726,7 +726,7 @@
         "Im Scheinwerfer, um Licht zu bündeln",
         "Als Schminkspiegel zum Vergrössern",
         "Als Verkehrsspiegel an unübersichtlichen Kreuzungen",
-        "Im Solarkocher"
+        "In der Taschenlampe"
        ],
        "answer": 2,
        "explanation": "Ein Wölbspiegel zeigt einen grossen Bereich."
@@ -736,9 +736,9 @@
        "goal": 8,
        "level": "E",
        "type": "tf",
-       "prompt": "Achsenparallele Strahlen laufen nach einem Wölbspiegel so auseinander, als kämen sie von einem Punkt hinter dem Spiegel.",
+       "prompt": "Achsenparallele Strahlen (parallel zur Achse) laufen nach einem Wölbspiegel so auseinander, als kämen sie von einem Punkt hinter dem Spiegel.",
        "answer": true,
-       "explanation": "Richtig. Dieser Punkt ist der scheinbare Brennpunkt."
+       "explanation": "Richtig. Dieser Punkt ist der scheinbare Brennpunkt (die Strahlen treffen sich dort nicht wirklich)."
       },
       {
        "id": "O030",
@@ -753,7 +753,7 @@
         "Vom Lot weg"
        ],
        "answer": 1,
-       "explanation": "Ins optisch dichtere Medium wird der Strahl zum Lot hin gebrochen."
+       "explanation": "Ins optisch dichtere Medium (Stoff) wird der Strahl zum Lot hin gebrochen."
       },
       {
        "id": "O031",
@@ -762,7 +762,7 @@
        "type": "tf",
        "prompt": "Ein Lichtstrahl, der senkrecht auf eine Wasseroberfläche trifft, wird nicht abgelenkt.",
        "answer": true,
-       "explanation": "Richtig. Bei 0° Einfallswinkel geht er gerade weiter."
+       "explanation": "Richtig. Trifft der Strahl senkrecht auf (Einfallswinkel 0°), geht er gerade weiter."
       },
       {
        "id": "O032",
@@ -774,7 +774,7 @@
         "Das Wasser biegt den Halm.",
         "Das Glas wirkt wie ein Spiegel.",
         "Licht ist im Wasser schneller.",
-        "Das Licht vom Halm im Wasser wird beim Austritt vom Lot weg gebrochen; der Teil wirkt angehoben."
+        "Das Licht vom Halm wird beim Übergang Wasser→Luft geknickt; der Teil im Wasser wirkt höher."
        ],
        "answer": 3,
        "explanation": "Das Auge verlängert die Strahlen geradlinig zurück, das Bild liegt höher (Hebung)."
@@ -784,10 +784,10 @@
        "goal": 9,
        "level": "E",
        "type": "mc",
-       "prompt": "Ein Strahl geht durch eine Glasplatte mit parallelen Flächen. Wie verlässt er sie?",
+       "prompt": "Ein Strahl geht durch eine dicke Glasscheibe (Vorder- und Rückseite parallel). Wie verlässt er sie?",
        "options": [
         "Senkrecht zur Platte",
-        "Parallel zur Einfallsrichtung, etwas verschoben",
+        "In die gleiche Richtung wie vorher, aber etwas seitlich verschoben",
         "Gar nicht",
         "Zum Lot hin geknickt"
        ],
@@ -800,7 +800,7 @@
        "level": "G",
        "type": "cloze",
        "prompt": "Ergänze.",
-       "text": "Totalreflexion gibt es nur, wenn Licht vom optisch {0} ins optisch {1} Medium will und der Einfallswinkel gross genug ist.",
+       "text": "Totalreflexion gibt es nur, wenn Licht vom optisch {0} Medium (Stoff) ins optisch {1} will und der Einfallswinkel gross genug ist.",
        "gaps": [
         {
          "options": [
@@ -817,7 +817,7 @@
          "answer": 1
         }
        ],
-       "explanation": "Zum Beispiel von Glas nach Luft."
+       "explanation": "Zum Beispiel von Glas in Luft."
       },
       {
        "id": "O035",
@@ -842,21 +842,21 @@
        "prompt": "Warum hat eine Glasfaser einen Mantel?",
        "options": [
         "Der Mantel färbt das Licht.",
-        "Der Mantel ist optisch dünner; so kommt es an der Grenze zur Totalreflexion.",
+        "Der Mantel ist optisch dünner als der Kern; darum gibt es an der Grenze Totalreflexion.",
         "Der Mantel macht das Kabel warm.",
         "Der Mantel ist ein Spiegel aus Metall."
        ],
        "answer": 1,
-       "explanation": "Totalreflexion braucht den Übergang ins optisch dünnere Medium."
+       "explanation": "Totalreflexion braucht den Übergang ins optisch dünnere Medium (Stoff)."
       },
       {
        "id": "O037",
        "goal": 10,
        "level": "E",
        "type": "tf",
-       "prompt": "Eine Fata Morgana entsteht, weil heisse Luft über dem Boden optisch dünner ist; das Licht vom Himmel wird umgelenkt und wirkt wie eine Wasserfläche.",
+       "prompt": "Eine Fata Morgana entsteht durch Totalreflexion des Lichts an einer heissen, optisch dünneren Luftschicht über dem Boden.",
        "answer": true,
-       "explanation": "Richtig. Man sieht den Himmel «gespiegelt» am Boden."
+       "explanation": "Richtig. Das Licht vom Himmel wird an der heissen Luftschicht total reflektiert. Darum sieht man den Himmel am Boden, und es wirkt wie eine Wasserfläche."
       },
       {
        "id": "O038",
@@ -885,7 +885,7 @@
        "goal": 11,
        "level": "G",
        "type": "mc",
-       "prompt": "Wohin läuft ein achsenparalleler Strahl nach einer Sammellinse?",
+       "prompt": "Wohin läuft ein achsenparalleler Strahl (parallel zur Achse) nach einer Sammellinse?",
        "options": [
         "Zurück zur Lampe",
         "Parallel weiter",
@@ -903,12 +903,12 @@
        "prompt": "Wie kannst du ohne Hilfsmittel eine Sammellinse von einer Zerstreuungslinse unterscheiden?",
        "options": [
         "Sie riechen verschieden.",
-        "Rand und Mitte betasten: Die Sammellinse ist in der Mitte dicker.",
+        "Mit den Fingern prüfen, ob die Linse in der Mitte oder am Rand dicker ist",
         "An der Farbe",
         "Am Gewicht"
        ],
        "answer": 1,
-       "explanation": "Konvexe Linsen sind in der Mitte dicker, konkave am Rand."
+       "explanation": "Sammellinsen (konvex) sind in der Mitte dicker, Zerstreuungslinsen (konkav) am Rand."
       },
       {
        "id": "O041",
@@ -928,11 +928,11 @@
        "options": [
         "Nur bei Dunkelheit",
         "Die Lupe ans Ohr halten",
-        "Den Gegenstand innerhalb der Brennweite halten",
-        "Den Gegenstand weit hinter den Brennpunkt halten"
+        "Den Gegenstand näher an der Lupe halten als der Brennpunkt",
+        "Den Gegenstand weiter von der Lupe weg halten als der Brennpunkt"
        ],
        "answer": 2,
-       "explanation": "Dann entsteht ein vergrössertes, aufrechtes Bild."
+       "explanation": "Dann entsteht ein vergrössertes Bild, das nicht auf dem Kopf steht."
       },
       {
        "id": "O043",
@@ -958,7 +958,7 @@
          "speichert die Fotos"
         ]
        ],
-       "explanation": "Diese Teile kommen im Skript vor."
+       "explanation": "Die Linse erzeugt das Bild, die Blende regelt die Lichtmenge, der Sensor nimmt das Bild auf, die Speicherkarte speichert es."
       },
       {
        "id": "O044",
@@ -973,7 +973,7 @@
         "Die Blende weiter öffnen"
        ],
        "answer": 3,
-       "explanation": "Eine grosse Blendenöffnung lässt mehr Licht auf den Sensor."
+       "explanation": "Ist die Blende weit offen, kommt mehr Licht auf den Sensor."
       },
       {
        "id": "O045",
@@ -987,7 +987,7 @@
          "Objektiv"
         ],
         [
-         "Pupille/Iris",
+         "Pupille (Loch in der Regenbogenhaut)",
          "Blende"
         ],
         [
@@ -1010,7 +1010,7 @@
         "Sie bleibt gleich."
        ],
        "answer": 1,
-       "explanation": "Wie eine offene Blende lässt sie mehr Licht ins Auge."
+       "explanation": "Die Pupille wird grösser, wie eine weit offene Blende. So kommt mehr Licht ins Auge."
       },
       {
        "id": "O047",
@@ -1026,13 +1026,13 @@
        "goal": 14,
        "level": "G",
        "type": "cloze",
-       "prompt": "Ergänze die additive Farbmischung.",
+       "prompt": "Ergänze die additive Farbmischung (farbiges Licht überlagert sich).",
        "text": "Rot + Grün = {0}, Rot + Blau = {1}, Rot + Grün + Blau = {2}.",
        "gaps": [
         {
          "options": [
-          "Magenta",
-          "Cyan",
+          "Magenta (Pink-Lila)",
+          "Cyan (Hellblau)",
           "Gelb"
          ],
          "answer": 2
@@ -1040,8 +1040,8 @@
         {
          "options": [
           "Gelb",
-          "Cyan",
-          "Magenta"
+          "Cyan (Hellblau)",
+          "Magenta (Pink-Lila)"
          ],
          "answer": 2
         },
@@ -1061,7 +1061,7 @@
        "goal": 14,
        "level": "E",
        "type": "mc",
-       "prompt": "Auf einem Bildschirm leuchtet Gelb. Welche Farbpunkte leuchten?",
+       "prompt": "Auf einem Bildschirm leuchtet Gelb. Welche kleinen Leuchtpunkte (Pixel) leuchten?",
        "options": [
         "Rot und Blau",
         "Rot und Grün",
@@ -1069,14 +1069,14 @@
         "Grün und Blau"
        ],
        "answer": 1,
-       "explanation": "Bildschirme mischen additiv aus Rot, Grün und Blau."
+       "explanation": "Bildschirme mischen alle Farben aus rotem, grünem und blauem Licht."
       },
       {
        "id": "O050",
        "goal": 14,
        "level": "E",
        "type": "mc",
-       "prompt": "Eine weisse Fläche erscheint plötzlich Cyan. Welche Farbe ist ausgefallen?",
+       "prompt": "Ein Bildschirm zeigt Weiss aus Rot, Grün und Blau. Plötzlich sieht die Fläche Cyan (Hellblau) aus. Welche Farbe ist ausgefallen?",
        "options": [
         "Gelb",
         "Grün",
@@ -1084,7 +1084,7 @@
         "Blau"
        ],
        "answer": 2,
-       "explanation": "Weiss − Rot = Grün + Blau = Cyan."
+       "explanation": "Ohne Rot bleiben Grün und Blau. Zusammen ergeben sie Cyan."
       },
       {
        "id": "O051",
@@ -1100,7 +1100,7 @@
        "goal": 15,
        "level": "G",
        "type": "order",
-       "prompt": "Ordne die Farben des Spektrums so, wie sie nach dem Prisma liegen, beginnend bei der am wenigsten gebrochenen.",
+       "prompt": "Ordne die Farben des Spektrums so, wie sie nach dem Prisma liegen. Beginne mit der Farbe, die am wenigsten abgelenkt wird.",
        "items": [
         "Rot",
         "Orange",
@@ -1120,7 +1120,7 @@
        "options": [
         "Etwa 1 bis 10 m",
         "Etwa 1 bis 10 nm",
-        "Etwa 380 bis 780 nm",
+        "Etwa 380 bis 780 nm (Nanometer)",
         "Etwa 380 bis 780 mm"
        ],
        "answer": 2,
@@ -1139,7 +1139,7 @@
         "Violett"
        ],
        "answer": 1,
-       "explanation": "Langwelliges Licht ist rot, kurzwelliges violett."
+       "explanation": "Licht mit langer Wellenlänge ist rot, Licht mit kurzer Wellenlänge violett."
       },
       {
        "id": "O055",
@@ -1148,7 +1148,7 @@
        "type": "tf",
        "prompt": "Ein Prisma erzeugt die Farben selbst; im weissen Licht sind sie nicht enthalten.",
        "answer": false,
-       "explanation": "Falsch. Weisses Licht besteht aus allen Farben; das Prisma bricht sie verschieden stark und trennt sie."
+       "explanation": "Falsch. Weisses Licht besteht aus allen Farben. Das Prisma bricht sie verschieden stark und trennt sie."
       }
      ]
     }
