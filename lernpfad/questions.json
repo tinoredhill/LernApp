@@ -1950,6 +1950,587 @@
        "explanation": "$r^2$ wird 4-mal, $h$ 2-mal so gross: $4\\cdot 2=8$."
       }
      ]
+    },
+    {
+     "id": "mathe9-geld-alltag",
+     "name": "Geld und Alltag",
+     "goals": {
+      "1": "Prozentwert, Grundwert, Prozentsatz und Kopfrechnen",
+      "2": "Mit dem Faktor rechnen",
+      "3": "Gewinn und Verlust in CHF und Prozent",
+      "4": "Rabatt und Skonto",
+      "5": "Rückwärts rechnen: Preis vor Rabatt oder Aufschlag",
+      "6": "MwSt dazurechnen und herausrechnen",
+      "7": "Bruttolohn, Abzüge, Nettolohn",
+      "8": "Ab wann zahlen Lernende AHV/IV/EO?",
+      "9": "Netto zu Brutto und 13. Monatslohn",
+      "10": "Budget, Überschuss, Defizit, Anteile",
+      "11": "Abos, Leasing und Kredit vergleichen",
+      "12": "Jahreszins und Marchzins",
+      "13": "Zinsformel umstellen"
+     },
+     "questions": [
+      {
+       "id": "GA001",
+       "goal": 1,
+       "level": "G",
+       "type": "mc",
+       "prompt": "Ein Ticket kostet CHF 60.00. Wie viel sind 15 % davon? (TH S. 2)",
+       "options": [
+        "CHF 6.00",
+        "CHF 9.00",
+        "CHF 15.00",
+        "CHF 4.00"
+       ],
+       "answer": 1,
+       "explanation": "10 % sind 6.00, 5 % sind 3.00, zusammen 9.00."
+      },
+      {
+       "id": "GA002",
+       "goal": 1,
+       "level": "G",
+       "type": "mc",
+       "prompt": "CHF 42.00 sind 12 % von Mias Budget. Wie gross ist das ganze Budget? (TH S. 2)",
+       "options": [
+        "CHF 504.00",
+        "CHF 350.00",
+        "CHF 5.04",
+        "CHF 420.00"
+       ],
+       "answer": 1,
+       "explanation": "Grundwert = 42 : 0.12 = 350."
+      },
+      {
+       "id": "GA003",
+       "goal": 1,
+       "level": "E",
+       "type": "num",
+       "prompt": "Ein Preis steigt von CHF 50.00 auf CHF 58.00. Um wie viel Prozent steigt er? (TH S. 2)",
+       "answer": 16,
+       "tolerance": 0,
+       "unit": "%",
+       "explanation": "Zunahme 8; 8 : 50 · 100 = 16 %."
+      },
+      {
+       "id": "GA004",
+       "goal": 2,
+       "level": "G",
+       "type": "mc",
+       "prompt": "Mit welchem Faktor rechnest du bei 25 % Rabatt? (TH S. 3)",
+       "options": [
+        "0.25",
+        "1.25",
+        "0.75",
+        "0.025"
+       ],
+       "answer": 2,
+       "explanation": "Es bleiben 100 % − 25 % = 75 %, also Faktor 0.75."
+      },
+      {
+       "id": "GA005",
+       "goal": 2,
+       "level": "G",
+       "type": "mc",
+       "prompt": "Welcher Faktor passt zu «Preis plus 8.1 % MwSt»? (TH S. 3)",
+       "options": [
+        "0.081",
+        "1.081",
+        "1.81",
+        "0.919"
+       ],
+       "answer": 1,
+       "explanation": "100 % + 8.1 % = 108.1 % = 1.081."
+      },
+      {
+       "id": "GA006",
+       "goal": 2,
+       "level": "E",
+       "type": "tf",
+       "prompt": "Zuerst 20 % Aufschlag und dann 20 % Rabatt ergibt wieder den alten Preis. (TH S. 3)",
+       "answer": false,
+       "explanation": "Falsch: 1.2 · 0.8 = 0.96. Der Preis ist danach 4 % tiefer."
+      },
+      {
+       "id": "GA007",
+       "goal": 3,
+       "level": "G",
+       "type": "mc",
+       "prompt": "Ankauf CHF 80.00, Verkauf CHF 100.00. Wie viel Prozent Gewinn sind das? (TH S. 3)",
+       "options": [
+        "20 %",
+        "25 %",
+        "80 %",
+        "120 %"
+       ],
+       "answer": 1,
+       "explanation": "Gewinn 20, Grundwert ist der Ankauf: 20 : 80 = 25 %."
+      },
+      {
+       "id": "GA008",
+       "goal": 3,
+       "level": "E",
+       "type": "mc",
+       "prompt": "Ein Händler kauft für CHF 200.00 und verkauft für CHF 170.00. Was stimmt? (TH S. 3)",
+       "options": [
+        "Gewinn 15 %",
+        "Verlust 30 %",
+        "Verlust 15 %",
+        "Verlust 17.6 %"
+       ],
+       "answer": 2,
+       "explanation": "Verlust 30, bezogen auf den Ankauf 200: 15 %."
+      },
+      {
+       "id": "GA009",
+       "goal": 3,
+       "level": "G",
+       "type": "match",
+       "prompt": "Ordne die Begriffe zu. (TH S. 3)",
+       "pairs": [
+        [
+         "Ankauf",
+         "Preis, den der Laden bezahlt"
+        ],
+        [
+         "Verkauf",
+         "Preis, den die Kundschaft bezahlt"
+        ],
+        [
+         "Gewinn",
+         "Verkauf ist höher als Ankauf"
+        ],
+        [
+         "Verlust",
+         "Verkauf ist tiefer als Ankauf"
+        ]
+       ],
+       "explanation": "Gewinn = Verkauf − Ankauf (positiv), Verlust, wenn die Differenz negativ ist."
+      },
+      {
+       "id": "GA010",
+       "goal": 4,
+       "level": "G",
+       "type": "mc",
+       "prompt": "Ein Velo kostet CHF 600.00, es gibt 10 % Rabatt. Was zahlt man? (TH S. 4)",
+       "options": [
+        "CHF 590.00",
+        "CHF 540.00",
+        "CHF 660.00",
+        "CHF 560.00"
+       ],
+       "answer": 1,
+       "explanation": "600 · 0.9 = 540."
+      },
+      {
+       "id": "GA011",
+       "goal": 4,
+       "level": "E",
+       "type": "mc",
+       "prompt": "12 % Rabatt und danach 2 % Skonto: Wie gross ist der Abzug insgesamt? (TH S. 4)",
+       "options": [
+        "14 %",
+        "13.76 %",
+        "24 %",
+        "10 %"
+       ],
+       "answer": 1,
+       "explanation": "0.88 · 0.98 = 0.8624, also 13.76 % Abzug."
+      },
+      {
+       "id": "GA012",
+       "goal": 4,
+       "level": "G",
+       "type": "tf",
+       "prompt": "Skonto bekommt man, wenn man eine Rechnung schnell (z. B. innert 10 Tagen) bezahlt. (TH S. 4)",
+       "answer": true,
+       "explanation": "Richtig. Skonto ist ein Abzug für schnelles Bezahlen."
+      },
+      {
+       "id": "GA013",
+       "goal": 5,
+       "level": "E",
+       "type": "num",
+       "prompt": "Nach 20 % Rabatt kostet eine Uhr CHF 96.00. Wie teuer war sie vorher? (TH S. 4)",
+       "answer": 120,
+       "tolerance": 0,
+       "unit": "CHF",
+       "explanation": "Es bleiben 80 %: 96 : 0.8 = 120."
+      },
+      {
+       "id": "GA014",
+       "goal": 5,
+       "level": "E",
+       "type": "mc",
+       "prompt": "Ein Velohelm kostet nach 35 % Aufschlag CHF 81.00. Wie viel hat der Laden bezahlt? (TH S. 4)",
+       "options": [
+        "CHF 52.65",
+        "CHF 60.00",
+        "CHF 109.35",
+        "CHF 46.00"
+       ],
+       "answer": 1,
+       "explanation": "81 : 1.35 = 60."
+      },
+      {
+       "id": "GA015",
+       "goal": 5,
+       "level": "E",
+       "type": "cloze",
+       "prompt": "Rückwärts rechnen (TH S. 4)",
+       "text": "Bei einem Rabatt {0} man den neuen Preis durch den Faktor, bei einem Aufschlag ist der Faktor {1} als 1.",
+       "gaps": [
+        {
+         "options": [
+          "teilt",
+          "multipliziert",
+          "subtrahiert"
+         ],
+         "answer": 0
+        },
+        {
+         "options": [
+          "kleiner",
+          "grösser",
+          "gleich"
+         ],
+         "answer": 1
+        }
+       ],
+       "explanation": "Rückwärts teilt man durch den Faktor; ein Aufschlag hat einen Faktor über 1."
+      },
+      {
+       "id": "GA016",
+       "goal": 6,
+       "level": "G",
+       "type": "mc",
+       "prompt": "Ein Handwerker verrechnet CHF 300.00 exkl. MwSt (8.1 %). Was zahlt man? (TH S. 5)",
+       "options": [
+        "CHF 308.10",
+        "CHF 324.30",
+        "CHF 275.70",
+        "CHF 330.00"
+       ],
+       "answer": 1,
+       "explanation": "300 · 1.081 = 324.30."
+      },
+      {
+       "id": "GA017",
+       "goal": 6,
+       "level": "E",
+       "type": "mc",
+       "prompt": "Ein Rucksack kostet CHF 64.86 inkl. 8.1 % MwSt. Wie viel ist er ohne MwSt wert? (TH S. 5)",
+       "options": [
+        "CHF 59.61",
+        "CHF 60.00",
+        "CHF 56.76",
+        "CHF 64.05"
+       ],
+       "answer": 1,
+       "explanation": "64.86 : 1.081 = 60.00. Falsch wäre 64.86 − 8.1 %."
+      },
+      {
+       "id": "GA018",
+       "goal": 6,
+       "level": "G",
+       "type": "mc",
+       "prompt": "Welcher MwSt-Satz gilt 2026 für Lebensmittel? (TH S. 5)",
+       "options": [
+        "8.1 %",
+        "3.8 %",
+        "2.6 %",
+        "0 %"
+       ],
+       "answer": 2,
+       "explanation": "Reduzierter Satz 2.6 % für Lebensmittel, Bücher, Medikamente."
+      },
+      {
+       "id": "GA019",
+       "goal": 7,
+       "level": "G",
+       "type": "mc",
+       "prompt": "Was bedeutet «Nettolohn»? (TH S. 6)",
+       "options": [
+        "Lohn vor den Abzügen",
+        "Lohn nach den Abzügen",
+        "Lohn mit 13. Monatslohn",
+        "Lohn pro Stunde"
+       ],
+       "answer": 1,
+       "explanation": "Netto = Brutto − Abzüge, das Geld, das man ausbezahlt bekommt."
+      },
+      {
+       "id": "GA020",
+       "goal": 7,
+       "level": "E",
+       "type": "num",
+       "prompt": "Brutto CHF 1’000.00, Abzüge 7.4 %. Wie hoch ist der Nettolohn? (TH S. 6)",
+       "answer": 926,
+       "tolerance": 0,
+       "unit": "CHF",
+       "explanation": "1’000 · 0.926 = 926."
+      },
+      {
+       "id": "GA021",
+       "goal": 7,
+       "level": "G",
+       "type": "match",
+       "prompt": "Welcher Abzug ist welche Versicherung? (TH S. 6)",
+       "pairs": [
+        [
+         "AHV/IV/EO",
+         "Alter, Invalidität, Erwerbsersatz"
+        ],
+        [
+         "ALV",
+         "Arbeitslosigkeit"
+        ],
+        [
+         "NBU",
+         "Unfälle in der Freizeit"
+        ]
+       ],
+       "explanation": "AHV/IV/EO 5.3 %, ALV 1.1 %, NBU je nach Firma (ca. 1 %)."
+      },
+      {
+       "id": "GA022",
+       "goal": 7,
+       "level": "G",
+       "type": "mc",
+       "prompt": "Wie viel Prozent zahlen Angestellte 2026 für AHV/IV/EO? (TH S. 6)",
+       "options": [
+        "4.35 %",
+        "5.3 %",
+        "10.6 %",
+        "1.1 %"
+       ],
+       "answer": 1,
+       "explanation": "4.35 % AHV + 0.7 % IV + 0.25 % EO = 5.3 % (die Firma zahlt nochmals gleich viel)."
+      },
+      {
+       "id": "GA023",
+       "goal": 8,
+       "level": "G",
+       "type": "mc",
+       "prompt": "Ab wann zahlen Lernende AHV/IV/EO-Beiträge? (TH S. 6)",
+       "options": [
+        "ab dem 16. Geburtstag",
+        "ab dem 1. Januar nach dem 17. Geburtstag",
+        "ab dem 18. Geburtstag",
+        "ab Lehrbeginn"
+       ],
+       "answer": 1,
+       "explanation": "Beiträge ab 1. Januar nach dem 17. Geburtstag."
+      },
+      {
+       "id": "GA024",
+       "goal": 8,
+       "level": "E",
+       "type": "tf",
+       "prompt": "Jahrgang 2009: Diese Lernenden zahlen 2026 schon AHV/IV/EO-Beiträge. (TH S. 7)",
+       "answer": false,
+       "explanation": "Falsch: Der 17. Geburtstag ist 2026, Beiträge erst ab 1.1.2027."
+      },
+      {
+       "id": "GA025",
+       "goal": 9,
+       "level": "E",
+       "type": "mc",
+       "prompt": "Netto CHF 926.00 bei 7.4 % Abzügen. Wie hoch ist der Bruttolohn? (TH S. 7)",
+       "options": [
+        "CHF 994.52",
+        "CHF 1’000.00",
+        "CHF 857.48",
+        "CHF 1’074.00"
+       ],
+       "answer": 1,
+       "explanation": "Netto = 92.6 % → 926 : 0.926 = 1’000. Falsch wäre 926 · 1.074."
+      },
+      {
+       "id": "GA026",
+       "goal": 9,
+       "level": "G",
+       "type": "mc",
+       "prompt": "Ein Lehrling verdient CHF 900.00 pro Monat und bekommt 13 Löhne. Wie viel ist das im Jahr? (TH S. 7)",
+       "options": [
+        "CHF 10’800.00",
+        "CHF 11’700.00",
+        "CHF 975.00",
+        "CHF 12’600.00"
+       ],
+       "answer": 1,
+       "explanation": "900 · 13 = 11’700."
+      },
+      {
+       "id": "GA027",
+       "goal": 10,
+       "level": "G",
+       "type": "mc",
+       "prompt": "Einnahmen CHF 950.00, Ausgaben CHF 1’010.00. Was ergibt sich? (TH S. 8)",
+       "options": [
+        "Überschuss CHF 60.00",
+        "Defizit CHF 60.00",
+        "Überschuss CHF 1’960.00",
+        "Defizit CHF 1’010.00"
+       ],
+       "answer": 1,
+       "explanation": "950 − 1’010 = −60, also ein Defizit."
+      },
+      {
+       "id": "GA028",
+       "goal": 10,
+       "level": "E",
+       "type": "num",
+       "prompt": "Die Brille kostet CHF 360.00 und hält 3 Jahre. Wie viel legst du pro Monat zurück? (TH S. 8)",
+       "answer": 10,
+       "tolerance": 0,
+       "unit": "CHF",
+       "explanation": "360 : 36 Monate = 10."
+      },
+      {
+       "id": "GA029",
+       "goal": 10,
+       "level": "E",
+       "type": "mc",
+       "prompt": "Von CHF 1’200.00 netto gibt Ben CHF 300.00 für Freizeit aus. Welcher Anteil ist das? (TH S. 8)",
+       "options": [
+        "30 %",
+        "25 %",
+        "4 %",
+        "40 %"
+       ],
+       "answer": 1,
+       "explanation": "300 : 1’200 = 0.25 = 25 %."
+      },
+      {
+       "id": "GA030",
+       "goal": 11,
+       "level": "G",
+       "type": "mc",
+       "prompt": "Ein Abo kostet CHF 19.90 pro Monat. Wie viel ist das pro Jahr? (TH S. 9)",
+       "options": [
+        "CHF 199.00",
+        "CHF 238.80",
+        "CHF 218.90",
+        "CHF 1’990.00"
+       ],
+       "answer": 1,
+       "explanation": "19.90 · 12 = 238.80."
+      },
+      {
+       "id": "GA031",
+       "goal": 11,
+       "level": "E",
+       "type": "mc",
+       "prompt": "Welcher Höchstzins gilt in der Schweiz ab 2026 für Barkredite? (TH S. 9)",
+       "options": [
+        "8 %",
+        "10 %",
+        "12 %",
+        "15 %"
+       ],
+       "answer": 1,
+       "explanation": "10 % für Barkredite und Leasing, 12 % für Überziehung und Kreditkarte."
+      },
+      {
+       "id": "GA032",
+       "goal": 11,
+       "level": "E",
+       "type": "order",
+       "prompt": "Ordne vom günstigsten zum teuersten (Roller bar CHF 4’000). (TH S. 9)",
+       "items": [
+        "Sparen und bar bezahlen",
+        "Leasing mit Gesamtkosten CHF 4’300",
+        "Kredit mit Gesamtkosten CHF 4’400"
+       ],
+       "explanation": "Bar ist am günstigsten; jede Finanzierung kostet zusätzlich."
+      },
+      {
+       "id": "GA033",
+       "goal": 12,
+       "level": "G",
+       "type": "mc",
+       "prompt": "CHF 4’000.00 liegen ein Jahr zu 0.5 %. Wie viel Zins gibt es? (TH S. 10)",
+       "options": [
+        "CHF 2.00",
+        "CHF 20.00",
+        "CHF 200.00",
+        "CHF 0.50"
+       ],
+       "answer": 1,
+       "explanation": "4’000 · 0.005 = 20."
+      },
+      {
+       "id": "GA034",
+       "goal": 12,
+       "level": "E",
+       "type": "mc",
+       "prompt": "Wie viele Zinstage zählt man vom 15.3. bis 30.6. (30 Tage pro Monat)? (TH S. 11)",
+       "options": [
+        "105",
+        "107",
+        "90",
+        "115"
+       ],
+       "answer": 0,
+       "explanation": "März 15 + April bis Juni 90 = 105 Tage."
+      },
+      {
+       "id": "GA035",
+       "goal": 12,
+       "level": "E",
+       "type": "num",
+       "prompt": "CHF 3’600.00 liegen 60 Tage zu 1 %. Wie viel Zins gibt es? (TH S. 10)",
+       "answer": 6,
+       "tolerance": 0,
+       "unit": "CHF",
+       "explanation": "3’600 · 1 · 60 : 36’000 = 6."
+      },
+      {
+       "id": "GA036",
+       "goal": 13,
+       "level": "E",
+       "type": "mc",
+       "prompt": "Welche Formel liefert das Kapital K? (TH S. 11)",
+       "options": [
+        "K = Z · p · t : 36’000",
+        "K = Z · 36’000 : (p · t)",
+        "K = p · t : (Z · 36’000)",
+        "K = Z : (p · t)"
+       ],
+       "answer": 1,
+       "explanation": "Aus Z = K · p · t : 36’000 folgt K = Z · 36’000 : (p · t)."
+      },
+      {
+       "id": "GA037",
+       "goal": 13,
+       "level": "E",
+       "type": "mc",
+       "prompt": "Ein Konto bringt CHF 24.00 Jahreszins bei 0.8 %. Wie viel Geld liegt darauf? (TH S. 11)",
+       "options": [
+        "CHF 192.00",
+        "CHF 3’000.00",
+        "CHF 1’920.00",
+        "CHF 30’000.00"
+       ],
+       "answer": 1,
+       "explanation": "K = 24 · 100 : 0.8 = 3’000."
+      },
+      {
+       "id": "GA038",
+       "goal": 13,
+       "level": "E",
+       "type": "mc",
+       "prompt": "CHF 2’000.00 bringen in einem Jahr CHF 15.00 Zins. Wie hoch ist der Zinssatz? (TH S. 11)",
+       "options": [
+        "0.75 %",
+        "1.5 %",
+        "7.5 %",
+        "0.15 %"
+       ],
+       "answer": 0,
+       "explanation": "p = 15 · 100 : 2’000 = 0.75 %."
+      }
+     ]
     }
    ]
   },
