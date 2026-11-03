@@ -1,7 +1,7 @@
 {
  "subject": "ma",
  "status": "aktuell",
- "quelle": "lokal: m9-geld-alltag (Theorieheft Geld und Alltag, Lernziele) – Entwurf, nicht in der App",
+ "quelle": "lokal: m9-geld-alltag (Theorieheft Geld und Alltag, Lernziele)",
  "topic": {
   "id": "mathe9-geld-alltag",
   "name": "Geld und Alltag",
@@ -580,6 +580,384 @@
     ],
     "answer": 0,
     "explanation": "p = 15 · 100 : 2’000 = 0.75 %."
+   },
+   {
+    "id": "GA039",
+    "goal": 1,
+    "level": "G",
+    "type": "mc",
+    "prompt": "Ein Preis wird von CHF 80.00 auf CHF 60.00 gesenkt. Was ist bei der Frage «Um wie viel Prozent wurde er gesenkt?» der Grundwert (100 %)? (TH S. 2)",
+    "options": [
+     "der neue Preis",
+     "die Preissenkung",
+     "der alte Preis",
+     "immer CHF 100.00"
+    ],
+    "answer": 2,
+    "explanation": "Man vergleicht mit dem Preis vorher: Der alte Preis ist der Grundwert (100 %)."
+   },
+   {
+    "id": "GA040",
+    "goal": 1,
+    "level": "G",
+    "type": "cloze",
+    "prompt": "Prozente im Kopf (TH S. 2)",
+    "text": "25 % rechnest du im Kopf, indem du durch {0} teilst. 5 % sind die {1} von 10 %.",
+    "gaps": [
+     {
+      "options": [
+       "25",
+       "4",
+       "2.5"
+      ],
+      "answer": 1
+     },
+     {
+      "options": [
+       "Hälfte",
+       "Doppelte",
+       "Zehntel"
+      ],
+      "answer": 0
+     }
+    ],
+    "explanation": "25 % ist ein Viertel, also durch 4. 5 % ist die Hälfte von 10 %."
+   },
+   {
+    "id": "GA041",
+    "goal": 2,
+    "level": "G",
+    "type": "match",
+    "prompt": "Welcher Faktor passt zu welcher Änderung? (TH S. 3)",
+    "pairs": [
+     [
+      "· 1.15",
+      "15 % Zuschlag"
+     ],
+     [
+      "· 0.85",
+      "15 % Abzug"
+     ],
+     [
+      "· 1.015",
+      "1.5 % Zuschlag"
+     ],
+     [
+      "· 0.985",
+      "1.5 % Abzug"
+     ]
+    ],
+    "explanation": "Zuschlag: 1 + p/100 (über 1). Abzug: 1 − p/100 (unter 1)."
+   },
+   {
+    "id": "GA042",
+    "goal": 2,
+    "level": "G",
+    "type": "tf",
+    "prompt": "Wer einen Preis mit dem Faktor 0.7 multipliziert, rechnet 70 % dazu. (TH S. 3)",
+    "answer": false,
+    "explanation": "Falsch: Faktor 0.7 heisst, es bleiben 70 %. Es gehen also 30 % weg."
+   },
+   {
+    "id": "GA043",
+    "goal": 3,
+    "level": "G",
+    "type": "tf",
+    "prompt": "Den Gewinn in Prozent rechnet man vom Verkaufspreis aus. (TH S. 3)",
+    "answer": false,
+    "explanation": "Falsch: Beim Gewinn und Verlust ist der Ankauf der Grundwert (100 %)."
+   },
+   {
+    "id": "GA044",
+    "goal": 4,
+    "level": "G",
+    "type": "mc",
+    "prompt": "Warum ergeben 12 % Rabatt und danach 2 % Skonto zusammen weniger als 14 % Abzug? (TH S. 4)",
+    "options": [
+     "Weil Skonto nur bei Barzahlung gilt",
+     "Weil der Rabatt erst nach dem Skonto zählt",
+     "Weil man Prozente nie zusammenzählen darf",
+     "Weil das Skonto vom kleineren Betrag gerechnet wird"
+    ],
+    "answer": 3,
+    "explanation": "Das Skonto wird vom Rechnungsbetrag nach dem Rabatt gerechnet, also von weniger als 100 %."
+   },
+   {
+    "id": "GA045",
+    "goal": 4,
+    "level": "G",
+    "type": "order",
+    "prompt": "Bringe die Schritte einer Rechnung mit Rabatt und Skonto in die richtige Reihenfolge. (TH S. 4)",
+    "items": [
+     "Listenpreis",
+     "Rabatt abziehen",
+     "Rechnungsbetrag",
+     "Skonto abziehen",
+     "Barzahlungspreis"
+    ],
+    "explanation": "Zuerst Rabatt vom Listenpreis, dann Skonto vom Rechnungsbetrag: So entsteht der Barzahlungspreis."
+   },
+   {
+    "id": "GA046",
+    "goal": 5,
+    "level": "G",
+    "type": "mc",
+    "prompt": "Eine Jacke kostet nach 40 % Rabatt noch CHF 54.00. Welche Rechnung liefert den Preis vor dem Rabatt? (TH S. 4)",
+    "options": [
+     "54.00 · 1.4",
+     "54.00 : 0.6",
+     "54.00 : 0.4",
+     "54.00 · 0.6"
+    ],
+    "answer": 1,
+    "explanation": "Nach 40 % Rabatt bleiben 60 %. Rückwärts teilt man durch den Faktor 0.6."
+   },
+   {
+    "id": "GA047",
+    "goal": 5,
+    "level": "G",
+    "type": "tf",
+    "prompt": "Nach 20 % Rabatt kommt man zum alten Preis zurück, wenn man zum neuen Preis wieder 20 % dazurechnet. (TH S. 4)",
+    "answer": false,
+    "explanation": "Falsch: Die 20 % vom neuen Preis sind weniger als die 20 % vom alten. Richtig ist: neuer Preis : 0.8."
+   },
+   {
+    "id": "GA048",
+    "goal": 6,
+    "level": "G",
+    "type": "cloze",
+    "prompt": "MwSt dazurechnen und herausrechnen (TH S. 5)",
+    "text": "Den Preis inkl. MwSt erhältst du, indem du den Preis exkl. MwSt {0} 1.081 rechnest. Den Preis exkl. MwSt erhältst du, indem du den Preis inkl. MwSt {1} 1.081 rechnest.",
+    "gaps": [
+     {
+      "options": [
+       "mal",
+       "durch",
+       "minus"
+      ],
+      "answer": 0
+     },
+     {
+      "options": [
+       "mal",
+       "durch",
+       "minus"
+      ],
+      "answer": 1
+     }
+    ],
+    "explanation": "Dazurechnen: · 1.081. Herausrechnen: : 1.081, weil der Preis inkl. MwSt 108.1 % ist."
+   },
+   {
+    "id": "GA049",
+    "goal": 6,
+    "level": "G",
+    "type": "match",
+    "prompt": "Welcher MwSt-Satz gilt 2026? (TH S. 5)",
+    "pairs": [
+     [
+      "Handy",
+      "8.1 %"
+     ],
+     [
+      "Bücher",
+      "2.6 %"
+     ],
+     [
+      "Hotelübernachtung mit Frühstück",
+      "3.8 %"
+     ]
+    ],
+    "explanation": "Normalsatz 8.1 %, reduzierter Satz 2.6 % (z. B. Bücher), Sondersatz 3.8 % für die Hotellerie."
+   },
+   {
+    "id": "GA050",
+    "goal": 7,
+    "level": "G",
+    "type": "tf",
+    "prompt": "Bei den meisten Lernenden wird keine Pensionskasse (PK) abgezogen, weil ihr Jahreslohn unter CHF 22’680 liegt. (TH S. 6)",
+    "answer": true,
+    "explanation": "Richtig. Die PK beginnt erst ab CHF 22’680 Jahreslohn."
+   },
+   {
+    "id": "GA051",
+    "goal": 8,
+    "level": "G",
+    "type": "tf",
+    "prompt": "Wer noch keine AHV/IV/EO-Beiträge zahlt, dem wird auch keine ALV abgezogen. (TH S. 6)",
+    "answer": true,
+    "explanation": "Richtig. Die ALV wird nur bei Personen erhoben, die AHV-Beiträge zahlen."
+   },
+   {
+    "id": "GA052",
+    "goal": 8,
+    "level": "G",
+    "type": "mc",
+    "prompt": "Ein Lernender hat im März 2026 seinen 17. Geburtstag. Ab wann werden ihm AHV/IV/EO-Beiträge abgezogen? (TH S. 6)",
+    "options": [
+     "ab März 2026",
+     "ab 1. Januar 2027",
+     "ab 1. Januar 2026",
+     "ab März 2027"
+    ],
+    "answer": 1,
+    "explanation": "Beiträge ab dem 1. Januar nach dem 17. Geburtstag, also ab 1.1.2027."
+   },
+   {
+    "id": "GA053",
+    "goal": 9,
+    "level": "G",
+    "type": "mc",
+    "prompt": "Auf dem Konto kommt der Nettolohn an, die Abzüge sind 7.4 %. Welche Rechnung liefert den Bruttolohn? (TH S. 7)",
+    "options": [
+     "Netto · 1.074",
+     "Netto · 0.926",
+     "Netto : 0.926",
+     "Netto : 0.074"
+    ],
+    "answer": 2,
+    "explanation": "Netto sind 92.6 % vom Brutto, also Brutto = Netto : 0.926."
+   },
+   {
+    "id": "GA054",
+    "goal": 9,
+    "level": "G",
+    "type": "tf",
+    "prompt": "Bei 13 Monatslöhnen ist der Jahreslohn geteilt durch 12 grösser als ein Monatslohn. (TH S. 7)",
+    "answer": true,
+    "explanation": "Richtig. 13 Löhne auf 12 Monate verteilt ergeben pro Monat mehr als einen Monatslohn."
+   },
+   {
+    "id": "GA055",
+    "goal": 10,
+    "level": "G",
+    "type": "match",
+    "prompt": "Zu welcher Art von Ausgaben gehört der Posten? (TH S. 8)",
+    "pairs": [
+     [
+      "ÖV-Abo",
+      "Fixkosten"
+     ],
+     [
+      "Geld für die nächsten Ferien",
+      "Rückstellung"
+     ],
+     [
+      "Kinobesuch mit Freunden",
+      "persönliche Ausgabe"
+     ]
+    ],
+    "explanation": "Fixkosten sind jeden Monat gleich, Rückstellungen sind für seltene Ausgaben, der Rest ist persönlich."
+   },
+   {
+    "id": "GA056",
+    "goal": 10,
+    "level": "G",
+    "type": "mc",
+    "prompt": "Der Zahnarzt kostet ungefähr einmal pro Jahr. Wie nimmst du ihn ins Monatsbudget auf? (TH S. 8)",
+    "options": [
+     "den ganzen Jahresbetrag jeden Monat",
+     "gar nicht, er kommt ja nur einmal",
+     "nur im Monat, in dem die Rechnung kommt",
+     "jeden Monat den Jahresbetrag : 12 zur Seite legen"
+    ],
+    "answer": 3,
+    "explanation": "Seltene Ausgaben sind Rückstellungen: Jahresbetrag durch 12 pro Monat zur Seite legen."
+   },
+   {
+    "id": "GA057",
+    "goal": 11,
+    "level": "G",
+    "type": "tf",
+    "prompt": "Beim Leasing gehört das Auto nach der letzten Rate automatisch dir. (TH S. 9)",
+    "answer": false,
+    "explanation": "Falsch: Es gehört der Leasingfirma. Man gibt es zurück oder kauft es zum Restwert."
+   },
+   {
+    "id": "GA058",
+    "goal": 11,
+    "level": "G",
+    "type": "match",
+    "prompt": "Ordne die Begriffe zu. (TH S. 9)",
+    "pairs": [
+     [
+      "Rate",
+      "fester Betrag, den man regelmässig zahlt"
+     ],
+     [
+      "Anzahlung",
+      "erste grössere Zahlung am Anfang"
+     ],
+     [
+      "Restwert",
+      "Preis des Fahrzeugs am Ende des Leasings"
+     ],
+     [
+      "Überziehen",
+      "mehr ausgeben, als auf dem Konto ist"
+     ]
+    ],
+    "explanation": "Begriffe aus dem Theorieheft: Rate, Anzahlung, Restwert, Überziehen."
+   },
+   {
+    "id": "GA059",
+    "goal": 12,
+    "level": "G",
+    "type": "cloze",
+    "prompt": "Zinssatz und Marchzins (TH S. 10)",
+    "text": "Der Zinssatz gilt immer pro {0}. Liegt das Geld nur einen Teil davon auf dem Konto, gibt es den {1}.",
+    "gaps": [
+     {
+      "options": [
+       "Monat",
+       "Jahr",
+       "Tag"
+      ],
+      "answer": 1
+     },
+     {
+      "options": [
+       "Endkapital",
+       "Jahreszins",
+       "Marchzins"
+      ],
+      "answer": 2
+     }
+    ],
+    "explanation": "Der Zinssatz gilt pro Jahr; für einen Teil des Jahres gibt es den Marchzins."
+   },
+   {
+    "id": "GA060",
+    "goal": 12,
+    "level": "G",
+    "type": "tf",
+    "prompt": "Liegt das gleiche Geld zum gleichen Zinssatz doppelt so viele Tage auf dem Konto, gibt es doppelt so viel Marchzins. (TH S. 10)",
+    "answer": true,
+    "explanation": "Richtig. In Z = K · p/100 · t/360 wächst der Zins im gleichen Verhältnis wie die Tage t."
+   },
+   {
+    "id": "GA061",
+    "goal": 13,
+    "level": "G",
+    "type": "tf",
+    "prompt": "Bei gleichem Zinssatz braucht ein grösseres Kapital weniger Tage, um den gleichen Zins zu bringen. (TH S. 11)",
+    "answer": true,
+    "explanation": "Richtig. In t = Z · 100 · 360 : (K · p) steht K im Nenner: Grösseres K, kleineres t."
+   },
+   {
+    "id": "GA062",
+    "goal": 13,
+    "level": "G",
+    "type": "mc",
+    "prompt": "Ein Konto bringt nach einigen Tagen Zins. Was musst du kennen, um den Zinssatz zu berechnen? (TH S. 11)",
+    "options": [
+     "Zins, Kapital und Anzahl Tage",
+     "nur Zins und Anzahl Tage",
+     "nur Kapital und Anzahl Tage",
+     "nur den Zins"
+    ],
+    "answer": 0,
+    "explanation": "p = Z · 100 · 360 : (K · t): Man braucht Zins, Kapital und Tage."
    }
   ]
  }
